@@ -1,289 +1,530 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="hi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Marketing Solution</title>
+    <title>Mathaniya Technologies | Premium Marketing Solution</title>
+    
+    <!-- FAST LOADING: Critical Assets Preload -->
+    <link rel="preload" as="image" href="https://lh3.googleusercontent.com/d/1CP-Jw9zdX4h9-P-MVl_9QMXM9sZlTejO" fetchpriority="high">
+    <link rel="preload" as="image" href="https://lh3.googleusercontent.com/d/1Pb0DfsVdMkBDNCBDz8OJ6VFXXj7ycy_d">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Stylish Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&family=Kaushan+Script&family=Righteous&family=Bebas+Neue&display=block" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Hind', sans-serif; scroll-behavior: smooth; }
-        .hero-bg { background: radial-gradient(circle at top right, #065f46, #022c22); }
-        .ad-fade { transition: opacity 0.5s ease; }
-        
-        /* Hide scrollbar */
+        body { font-family: 'Hind', sans-serif; overflow-x: hidden; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        .video-box { 
-            position: relative; 
-            width: 100%; 
-            background: #000; 
-            border-radius: 2rem; 
-            overflow: hidden; 
-        }
-        .video-box iframe { 
-            position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; border: 0; display: block;
-        }
-
-        /* 3D Pulse Animations */
-        @keyframes attention-pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        /* BRAND TITLE - GREEN GRADIENT */
+        .brand-main-title {
+            font-family: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif; 
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%); /* Green Color */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.03em; 
+            display: inline-block;
+            line-height: 1;
+            /* Fallback opacity if animation fails */
+            opacity: 1; 
+            animation: fadeInTitle 0.4s ease-in forwards;
         }
 
-        .wa-3d-btn-green {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white; border: none; box-shadow: 0 4px 0 #075E54;
-            transition: all 0.2s; animation: attention-pulse 2s infinite;
+        @keyframes fadeInTitle {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-        .wa-3d-btn-green:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #075E54; }
-        .wa-3d-btn-green:active { transform: translateY(4px); box-shadow: 0 0 0 #075E54; }
-
-        .lang-btn-light {
-            background: #f1f5f9; color: #075E54; border: 1px solid #e2e8f0; box-shadow: 0 4px 0 #cbd5e1; transition: all 0.2s;
-        }
-        .lang-btn-light:hover { background: #e2e8f0; transform: translateY(-2px); box-shadow: 0 6px 0 #cbd5e1; }
-        .lang-btn-light:active { transform: translateY(4px); box-shadow: 0 0 0 #cbd5e1; }
-
-        /* Dropdown */
-        .lang-dropdown {
-            display: none; position: absolute; top: 130%; right: 0; background: white; border-radius: 1rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); padding: 0.5rem; min-width: 180px; z-index: 100; border: 1px solid #e2e8f0;
-        }
-        .lang-dropdown.show { display: block; animation: fadeIn 0.2s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .lang-option {
-            display: block; width: 100%; text-align: left; padding: 0.75rem 1rem; border-radius: 0.5rem; font-weight: 600;
-            color: #334155; transition: all 0.2s; border-bottom: 1px solid #f1f5f9;
-        }
-        .lang-option:last-child { border-bottom: none; }
-        .lang-option:hover { background-color: #ecfdf5; color: #059669; padding-left: 1.25rem; }
-
-        /* 3D Video Frame */
-        .video-frame-3d {
-            position: relative;
-            background: linear-gradient(45deg, #FF0000, #FF7300, #FFFB00, #48FF00, #00FFD5, #002BFF, #FF00C8, #FF0000);
-            background-size: 400%; animation: glowing-border 20s linear infinite;
-            padding: 8px; border-radius: 1.5rem;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2), 0 10px 40px rgba(0,0,0,0.4), inset 0 0 15px rgba(255,255,255,0.4);
-            transform: perspective(1000px) rotateX(2deg); transition: transform 0.3s ease;
-        }
-        .video-frame-3d:hover { transform: perspective(1000px) rotateX(0deg) scale(1.02); z-index: 10; }
-        @keyframes glowing-border { 0% { background-position: 0 0; } 50% { background-position: 400% 0; } 100% { background-position: 0 0; } }
-
-        .video-inner-container {
-            background: #000; border-radius: 1.2rem; overflow: hidden;
-            box-shadow: inset 0 0 30px rgba(0,0,0,0.8); border: 2px solid rgba(255,255,255,0.1); position: relative;
+        
+        /* BRAND SUBTITLE - BLACK */
+        .brand-subtitle {
+            font-family: 'Kaushan Script', cursive;
+            color: #000000; /* Black Color */
+            display: inline-block;
+            margin-top: 1px;
+            line-height: 1;
+            font-weight: 900;
         }
 
-        /* NEW STYLE: Green Transparent 3D Button for 'More Info' with DOUBLE BORDER */
-        .btn-3d-green-transparent {
-            background: rgba(16, 185, 129, 0.08); /* Emerald tint */
-            border: 4px double #059669; /* Double line border */
-            color: #047857; /* Emerald text */
-            box-shadow: 0 3px 0 rgba(5, 150, 105, 0.3); /* 3D Shadow */
-            border-radius: 9999px;
-            font-family: 'Outfit', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            min-width: 100px;
-            text-align: center;
-            justify-content: center;
+        /* Language Switcher */
+        .lang-switch-container {
+            display: flex; background: #f1f5f9; padding: 2px; border-radius: 9999px;
+            position: relative; cursor: pointer; width: 45px; height: 20px; align-items: center;
+            border: 1px solid #e2e8f0; flex-shrink: 0;
+        }
+        @media (min-width: 768px) { .lang-switch-container { width: 90px; height: 38px; } }
+        .lang-slider {
+            position: absolute; width: 20px; height: 16px; background: #059669; border-radius: 9999px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); left: 2px;
+        }
+        @media (min-width: 768px) { .lang-slider { width: 42px; height: 32px; } }
+        .lang-switch-container.is-hi .lang-slider { left: calc(100% - 22px); }
+        @media (min-width: 768px) { .lang-switch-container.is-hi .lang-slider { left: calc(100% - 44px); } }
+        
+        .lang-label { flex: 1; text-align: center; font-size: 7px; font-weight: 900; z-index: 10; }
+        @media (min-width: 768px) { .lang-label { font-size: 11px; } }
+        .lang-label.active { color: white; }
+        .lang-label.inactive { color: #64748b; }
+
+        .wa-3d-btn-green { 
+            background: linear-gradient(135deg, #25D366, #128C7E); 
+            color: white; 
+            box-shadow: 0 2px 0 #075E54; 
+            transition: all 0.2s; 
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+        .wa-3d-btn-green:active { transform: translateY(2px); box-shadow: none; }
+
+        /* Navigation Dropdown */
+        .nav-dropdown {
+            position: absolute;
+            top: 120%;
+            right: 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            padding: 8px;
+            min-width: 160px;
+            border: 1px solid #e2e8f0;
+            display: none;
+            z-index: 60;
+            animation: fadeIn 0.2s ease-out;
+        }
+        .nav-dropdown.show { display: block; }
+        .nav-item {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 10px;
+            padding: 10px 12px;
+            color: #334155;
+            font-weight: 700;
+            font-size: 14px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-family: 'Outfit', sans-serif;
+            text-decoration: none;
         }
-        
-        .btn-3d-green-transparent:hover {
-            background: rgba(16, 185, 129, 0.15);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 0 rgba(5, 150, 105, 0.3);
+        .nav-item:hover { background: #ecfdf5; color: #059669; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Ticker */
+        .ticker-wrap { width: 100%; overflow: hidden; white-space: nowrap; background: #ffffff; border-bottom: 2px solid #ecfdf5; }
+        .ticker-move { display: inline-block; animation: ticker-swipe 65s linear infinite; }
+        @keyframes ticker-swipe { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+        .ticker-item { display: inline-block; padding-right: 60px; font-weight: 800; }
+
+        /* Profile Frame Styling */
+        .profile-frame-new {
+            position: relative; padding: 8px; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3);
+            animation: morph 6s ease-in-out infinite;
         }
-        
-        .btn-3d-green-transparent:active {
-            transform: translateY(3px);
-            box-shadow: 0 0 0 transparent;
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
         }
 
-        /* Modal Styles */
-        .modal-overlay {
-            display: none;
+        .img-container-new { background: white; padding: 4px; border-radius: inherit; }
+
+        .founder-banner-real {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover; background-position: center; position: relative;
+        }
+
+        .hero-banner-img { width: 100%; height: auto; display: block; object-fit: contain; }
+        
+        /* Modal Settings */
+        .modal-overlay { 
+            display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); 
+            z-index: 2000; backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 1rem;
+        }
+        .modal-content { 
+            background: white; border-radius: 1.5rem; max-width: 800px; width: 100%; 
+            max-height: 90vh; overflow-y: auto !important; position: relative; 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); -webkit-overflow-scrolling: touch;
+        }
+
+        /* Floating Button Comic Style */
+        .wa-floating-btn {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            backdrop-filter: blur(5px);
+            bottom: 5rem;
+            right: 1rem;
+            z-index: 9999;
+            background: #25D366;
+            color: black;
+            border: 3px solid black;
+            padding: 8px 15px;
+            font-family: 'Righteous', cursive;
+            font-size: 14px;
+            font-weight: 900;
+            text-transform: uppercase;
+            box-shadow: 5px 5px 0px black;
+            border-radius: 15px;
+            display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 1rem;
+            gap: 8px;
+            transform: rotate(-3deg);
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: meme-bounce 2.5s infinite alternate ease-in-out;
+            cursor: pointer;
+            text-decoration: none;
         }
-        .modal-content {
-            background: white;
-            border-radius: 1.5rem;
-            max-width: 800px;
-            width: 100%;
-            max-height: 85vh;
-            overflow-y: auto;
+        .wa-floating-btn:hover {
+            transform: rotate(0deg) scale(1.1);
+            box-shadow: 2px 2px 0px black;
+            background: #128C7E;
+            color: white;
+        }
+        .wa-floating-btn i { font-size: 24px; }
+        @keyframes meme-bounce {
+            0% { transform: translateY(0) rotate(-3deg); }
+            100% { transform: translateY(-8px) rotate(3deg); }
+        }
+
+        /* NEW SHANDAR MENU BUTTON STYLES */
+        .menu-btn-modern {
+            width: 35px; height: 35px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
             position: relative;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            padding: 2px;
         }
-        @keyframes modalPop {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+        @media (min-width: 768px) { .menu-btn-modern { width: 45px; height: 45px; gap: 6px; } }
+
+        .menu-btn-modern:hover {
+            box-shadow: 0 5px 15px rgba(5, 150, 105, 0.2);
+            border-color: #10b981;
+            transform: translateY(-1px);
         }
-        .article-body h3 { font-family: 'Outfit', sans-serif; color: #065f46; font-size: 1.5rem; font-weight: 800; margin-top: 1.5rem; margin-bottom: 0.5rem; }
-        .article-body p { margin-bottom: 1rem; color: #374151; line-height: 1.7; font-size: 1.05rem; }
-        .article-body ul { list-style: none; margin-bottom: 1.5rem; padding-left: 0; }
-        .article-body li { margin-bottom: 0.5rem; display: flex; align-items: start; }
-        .article-body li::before { content: '✅'; margin-right: 10px; }
-        .highlight-box { background: #f0fdf4; border-left: 5px solid #25D366; padding: 1rem; margin: 1.5rem 0; border-radius: 0.5rem; }
-        .more-service-tag {
-            position: absolute; top: -12px; left: 20px; background: #10b981; color: white;
-            padding: 2px 12px; border-radius: 6px; font-size: 10px; font-weight: 900;
-            text-transform: uppercase; z-index: 10;
+
+        .bar-line {
+            width: 22px; height: 3px;
+            background: #334155;
+            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
+        @media (min-width: 768px) { .bar-line { width: 26px; height: 3px; } }
+
+        /* Initial State: Stylish Staggered Lines */
+        .bar-line:nth-child(1) { width: 50%; transform: translateX(-25%); background: #059669; }
+        .bar-line:nth-child(2) { width: 100%; }
+        .bar-line:nth-child(3) { width: 50%; transform: translateX(25%); background: #059669; }
+
+        /* Hover State */
+        .menu-btn-modern:hover .bar-line:nth-child(1) { width: 70%; transform: translateX(0); background: #047857; }
+        .menu-btn-modern:hover .bar-line:nth-child(2) { width: 80%; }
+        .menu-btn-modern:hover .bar-line:nth-child(3) { width: 70%; transform: translateX(0); background: #047857; }
+
+        /* Active/Open State: The Cross (X) Animation */
+        .menu-btn-modern.active { border-color: #ef4444; box-shadow: 0 5px 15px rgba(239, 68, 68, 0.15); }
+        .menu-btn-modern.active .bar-line:nth-child(1) { width: 100%; transform: translateY(7px) rotate(45deg); background: #ef4444; }
+        @media (min-width: 768px) { .menu-btn-modern.active .bar-line:nth-child(1) { transform: translateY(9px) rotate(45deg); } }
+        .menu-btn-modern.active .bar-line:nth-child(2) { opacity: 0; transform: translateX(20px); }
+        .menu-btn-modern.active .bar-line:nth-child(3) { width: 100%; transform: translateY(-7px) rotate(-45deg); background: #ef4444; }
+        @media (min-width: 768px) { .menu-btn-modern.active .bar-line:nth-child(3) { transform: translateY(-9px) rotate(-45deg); } }
+
+        /* NEW UPDATED COMPACT LABEL STYLE (Green & Overlapping) */
+        .offer-label-pro {
+            position: absolute;
+            top: -10px; /* Half up / Half down overlap */
+            left: 10px;
+            background: linear-gradient(135deg, #059669, #10b981); /* Green Background */
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 8px; /* Very Compact */
+            padding: 2px 8px; /* Less Gap */
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #34d399;
+            z-index: 20;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 768px) { 
+            .offer-label-pro { font-size: 10px; top: -12px; padding: 3px 10px; left: 16px; } 
+        }
+
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-slate-50 text-slate-900 md:pb-0">
 
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md min-h-[80px] flex items-center px-2 md:px-4 shadow-lg border-b border-slate-100 transition-all py-1">
-        <div class="max-w-7xl mx-auto w-full flex flex-nowrap justify-between items-center gap-x-2">
+    <!-- Section 1: Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md h-[65px] md:h-[90px] flex items-center px-3 md:px-8 shadow-lg border-b border-slate-100 transition-all">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center gap-2">
             
-            <!-- Brand Name -->
-            <span class="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl transform hover:scale-105 transition duration-300 bg-gradient-to-r from-emerald-400 to-teal-200 bg-clip-text text-transparent px-1 py-1 whitespace-nowrap" 
-                  style="font-family: 'Kaushan Script', cursive; filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.2));">
-                <span id="navPrefix">WhatsApp Marketing</span>
-                <span id="navSuffix"> Software</span>
-            </span>
+            <!-- Branding Section -->
+            <div class="flex flex-col items-start justify-center min-w-0 flex-1">
+                <h1 class="brand-main-title text-[12px] xs:text-[15px] sm:text-[22px] md:text-[40px] uppercase whitespace-nowrap overflow-hidden text-ellipsis">
+                    WhatsApp Marketing Software
+                </h1>
+                <h2 class="brand-subtitle text-[7px] xs:text-[9px] sm:text-[11px] md:text-[19px] whitespace-nowrap">
+                    by Mathaniya Technologies
+                </h2>
+            </div>
 
-            <!-- Right Side Buttons Container -->
-            <div class="flex items-center gap-3 md:gap-3 shrink-0">
-                
-                <!-- 1. More Info Button -->
-                <button onclick="openModal('info')" class="btn-3d-green-transparent px-2 py-1.5 md:px-5 md:py-2 text-[10px] md:text-sm font-black flex items-center gap-1 whitespace-nowrap">
-                    <span>MORE INFO</span>
-                </button>
-
-                <!-- 2. Language Button -->
-                <div class="relative group">
-                    <button onclick="toggleLangMenu()" class="bg-white border-2 border-slate-200 hover:border-emerald-400 text-slate-700 px-2 md:px-3 py-1 rounded-xl font-bold flex items-center gap-2 shadow-sm transition-all group-hover:shadow-md" id="langBtn" title="Change Language">
-                        <div class="bg-emerald-50 p-1.5 rounded-full text-[#25D366] shrink-0">
-                            <i class="fas fa-globe text-sm md:text-base"></i>
-                        </div>
-                        <div class="flex flex-col items-start leading-none">
-                            <span class="text-[7px] md:text-[8px] text-slate-400 font-bold uppercase tracking-wider">Language</span>
-                            <span id="currentLangLabel" class="font-black text-slate-800 text-[9px] md:text-[11px] uppercase mt-0.5">ENGLISH</span>
-                        </div>
-                        <i class="fas fa-chevron-down text-[8px] md:text-[10px] text-slate-400 ml-1"></i>
-                    </button>
-
-                    <div id="langMenu" class="lang-dropdown">
-                        <button onclick="setLang('en')" class="lang-option">English</button>
-                        <button onclick="setLang('hi')" class="lang-option">हिंदी</button>
-                        <button onclick="setLang('gu')" class="lang-option">ગુજરાતી</button>
-                        <button onclick="setLang('kn')" class="lang-option">ಕನ್ನಡ</button>
-                        <button onclick="setLang('mr')" class="lang-option">मराठी</button>
-                        <button onclick="setLang('ta')" class="lang-option">தமிழ்</button>
-                        <button onclick="setLang('ur')" class="lang-option">اردو</button>
-                    </div>
+            <!-- Buttons Group -->
+            <div class="flex items-center gap-2 flex-shrink-0">
+                <div id="langSwitcher" class="lang-switch-container" onclick="toggleLanguage()">
+                    <div class="lang-slider" id="langSlider"></div>
+                    <span class="lang-label active" id="labelEn">EN</span>
+                    <span class="lang-label inactive" id="labelHi">HI</span>
                 </div>
                 
-                <!-- 3. WhatsApp Button -->
-                <a href="javascript:location.href=getWALink('Navbar')" id="navContact" class="wa-3d-btn-green px-3 py-1.5 md:px-5 md:py-2 rounded-full font-bold text-[10px] md:text-xs flex items-center gap-1 md:gap-2 whitespace-nowrap shadow-md">
-                    <i class="fab fa-whatsapp text-lg md:text-xl text-white drop-shadow-md"></i>
-                    <span data-hi="व्हाट्सएप ग्रुप" data-en="Join WhatsApp Group" class="tracking-wide">Join WhatsApp Group</span>
+                <!-- WhatsApp Channel Button -->
+                <a href="https://whatsapp.com/channel/0029VbBwZreGOj9hJFRni906" target="_blank" class="wa-3d-btn-green px-2 py-1.5 md:px-5 md:py-2.5 rounded-full font-black text-[7px] md:text-xs flex items-center gap-1 whitespace-nowrap shadow-md">
+                    <i class="fab fa-whatsapp text-[10px] md:text-lg"></i>
+                    <span data-hi="व्हाट्सएप चैनल जॉइन करें" data-en="Join WhatsApp Channel" id="navWaBtnText">Join WhatsApp Channel</span>
                 </a>
-                
+
+                <!-- 3-Dot Navigation Menu -->
+                <div class="relative ml-2">
+                    <button id="menuToggleBtn" onclick="toggleNavMenu()" class="menu-btn-modern" aria-label="Toggle Menu">
+                        <span class="bar-line"></span>
+                        <span class="bar-line"></span>
+                        <span class="bar-line"></span>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div id="navMenu" class="nav-dropdown">
+                        <a href="#" class="nav-item" onclick="toggleNavMenu()"><i class="fas fa-home w-5"></i> Home</a>
+                        <a href="#features" class="nav-item" onclick="toggleNavMenu()"><i class="fas fa-star w-5"></i> Features</a>
+                        <a href="#special-offer" class="nav-item" onclick="toggleNavMenu()"><i class="fas fa-gift w-5"></i> Special Offer</a>
+                        <!-- Link to Footer (#contact) -->
+                        <a href="#contact" class="nav-item" onclick="toggleNavMenu()"><i class="fas fa-envelope w-5"></i> Contact</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Generic Modal for Info/Policies -->
+    <!-- Section 2: Modal Container (Founder only) -->
     <div id="infoModal" class="modal-overlay" onclick="if(event.target === this) closeModal()">
-        <div class="modal-content relative">
-            <button onclick="closeModal()" class="absolute top-4 right-4 bg-red-100 hover:bg-red-200 text-red-600 rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl transition-colors z-10">&times;</button>
-            <div id="modalBody" class="p-8 md:p-12">
-                <!-- Content will be injected here -->
+        <div class="modal-content relative bg-white border-none no-scrollbar">
+            <button onclick="closeModal()" class="absolute top-4 right-4 bg-black/30 hover:bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl transition-colors z-50 shadow-lg">&times;</button>
+            
+            <div id="modalBody">
+                <div id="founderModalContent" class="hidden">
+                    <div class="relative w-full">
+                        <div class="founder-banner-real h-40 md:h-52 flex flex-col items-center justify-start text-center px-4 pt-6 md:pt-10">
+                            <h3 class="text-white text-3xl md:text-5xl font-black drop-shadow-lg mb-1" style="font-family: 'Kaushan Script', cursive;">Mathaniya Technologies</h3>
+                            <p class="text-emerald-300 font-bold text-[14px] md:text-2xl drop-shadow-md mt-1" style="font-family: 'Kaushan Script', cursive;">Leading Marketing Agency & IT Solutions</p>
+                            <p class="text-white/90 text-[12px] md:text-xl mt-2 max-w-md font-medium drop-shadow-md" style="font-family: 'Kaushan Script', cursive;">Expert in Smart AI Automation & Web Development</p>
+                        </div>
+                        <div class="max-w-xl mx-auto -mt-16 md:-mt-24 relative z-20 flex flex-col items-center text-center">
+                            <div class="profile-frame-new mb-4">
+                                <div class="img-container-new">
+                                    <img src="https://lh3.googleusercontent.com/d/1Pb0DfsVdMkBDNCBDz8OJ6VFXXj7ycy_d" class="w-36 h-36 md:w-56 md:h-56 object-cover" style="border-radius: inherit;" alt="Founder" decoding="sync" onerror="this.src='https://placehold.co/200x200?text=DM';">
+                                </div>
+                            </div>
+                            <h2 class="text-4xl md:text-7xl font-black tracking-tight mb-2 bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent drop-shadow-sm" style="font-family: 'Kaushan Script', cursive;">Dinesh Mathaniya</h2>
+                            <p class="text-slate-600 font-bold text-[16px] md:text-3xl mt-1" style="font-family: 'Kaushan Script', cursive;">Founder, Mathaniya Technologies</p>
+                            <div class="w-32 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 mt-4 rounded-full"></div>
+                        </div>
+                        
+                        <!-- Full Detailed Bio & Services Content -->
+                        <div class="p-4 md:p-10 space-y-8">
+                            <div class="bg-slate-50 p-6 md:p-10 rounded-[2.5rem] border border-slate-200 shadow-inner relative overflow-hidden text-left">
+                                <div class="absolute -top-6 -right-6 text-slate-100 text-9xl font-black select-none pointer-events-none opacity-50">"</div>
+                                <h3 class="text-2xl md:text-4xl font-black text-slate-900 mb-6 border-b-4 border-blue-500 inline-block pb-1" style="font-family: 'Kaushan Script', cursive;">About the Founder</h3>
+                                <div class="article-text text-slate-700 text-sm md:text-base leading-relaxed space-y-4 font-medium text-justify">
+                                    <p><strong>Dinesh Mathaniya</strong> is the founder of <strong>Mathaniya Technologies</strong>, with a strong focus on helping businesses grow through digital marketing, technology, and smart automation solutions. With hands-on experience in website development, WhatsApp marketing, and online branding, he is committed to delivering practical, result-oriented solutions for startups, small businesses, and growing brands.</p>
+                                    <p>His vision is to make professional digital services affordable, reliable, and accessible for every business to compete in today's fast-paced market. He believes that every brand deserves the power of high-end automation to streamline operations and maximize reach.</p>
+                                </div>
+                            </div>
+
+                            <!-- UPDATED SERVICES SECTION - STYLISH GRID LAYOUT -->
+                            <div class="bg-white p-6 md:p-8 rounded-[2.5rem] border border-emerald-100 shadow-xl text-left">
+                                <h2 class="text-3xl md:text-5xl font-black text-center text-slate-800 mb-8 drop-shadow-sm" style="font-family: 'Kaushan Script', cursive;">Our Other Services</h2>
+
+                                <!-- Stylish Grid System -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                                    
+                                    <!-- Service 1 -->
+                                    <div class="group bg-slate-50 p-6 rounded-2xl border-l-8 border-emerald-500 shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"><i class="fas fa-bullhorn text-6xl text-emerald-600"></i></div>
+                                        <h4 class="text-xl font-black text-emerald-800 uppercase mb-3 flex items-center gap-2">
+                                            <span class="bg-emerald-100 p-2 rounded-lg"><i class="fas fa-paper-plane text-emerald-600"></i></span> 
+                                            1. WhatsApp Marketing
+                                        </h4>
+                                        <p class="text-slate-600 text-sm leading-relaxed text-justify font-medium">In the rapidly evolving digital landscape, traditional marketing channels like email and SMS are seeing diminishing returns due to spam filters and low engagement. Mathaniya Technologies steps in to fill this gap with our state-of-the-art WhatsApp Marketing Software. We understand that your customers are on WhatsApp 24/7. Our tools allow you to tap into this massive user base with a staggering 98% open rate, ensuring your message is not just delivered but seen and acted upon. Whether you are announcing a new product, running a festive sale, or sending critical updates, our bulk sender ensures instant delivery to thousands of contacts with a single click, bypassing the tedious process of saving numbers manually. This direct line of communication builds trust and drives immediate action.</p>
+                                    </div>
+
+                                    <!-- Service 2 -->
+                                    <div class="group bg-slate-50 p-6 rounded-2xl border-l-8 border-blue-500 shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"><i class="fas fa-robot text-6xl text-blue-600"></i></div>
+                                        <h4 class="text-xl font-black text-blue-800 uppercase mb-3 flex items-center gap-2">
+                                            <span class="bg-blue-100 p-2 rounded-lg"><i class="fas fa-headset text-blue-600"></i></span> 
+                                            2. 24/7 AI Chatbot
+                                        </h4>
+                                        <p class="text-slate-600 text-sm leading-relaxed text-justify font-medium">Efficiency is the cornerstone of a successful business. Our AI-driven Chatbot technology acts as your round-the-clock sales and support agent. It never sleeps, never gets tired, and handles unlimited customer inquiries simultaneously. By automating responses to common queries, booking appointments, and guiding users through your sales funnel, you drastically reduce human error and operational costs while boosting customer satisfaction. This intelligent automation allows business owners to focus on strategy and growth while our software handles the repetitive engagement tasks seamlessly. Imagine generating leads while you sleep—that is the power of our automation.</p>
+                                    </div>
+
+                                    <!-- Service 3 -->
+                                    <div class="group bg-slate-50 p-6 rounded-2xl border-l-8 border-purple-500 shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"><i class="fas fa-filter text-6xl text-purple-600"></i></div>
+                                        <h4 class="text-xl font-black text-purple-800 uppercase mb-3 flex items-center gap-2">
+                                            <span class="bg-purple-100 p-2 rounded-lg"><i class="fas fa-magnet text-purple-600"></i></span> 
+                                            3. Lead Extraction
+                                        </h4>
+                                        <p class="text-slate-600 text-sm leading-relaxed text-justify font-medium">Data is the new oil, but only if it's refined. Our Group Grabber tool is a game-changer for lead generation. It allows you to extract high-quality, niche-specific contacts from WhatsApp groups relevant to your industry. Instead of shooting in the dark, you can target an audience that is already interested in your niche. Combined with our advanced Number Filter, which segregates active WhatsApp users from non-users, you ensure that every marketing rupee is spent on a valid lead, maximizing your ROI and keeping your campaigns clean and efficient. This targeted approach significantly increases conversion rates compared to cold calling.</p>
+                                    </div>
+
+                                    <!-- Service 4 -->
+                                    <div class="group bg-slate-50 p-6 rounded-2xl border-l-8 border-red-500 shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"><i class="fas fa-shield-alt text-6xl text-red-600"></i></div>
+                                        <h4 class="text-xl font-black text-red-800 uppercase mb-3 flex items-center gap-2">
+                                            <span class="bg-red-100 p-2 rounded-lg"><i class="fas fa-lock text-red-600"></i></span> 
+                                            4. Anti-Block Security
+                                        </h4>
+                                        <p class="text-slate-600 text-sm leading-relaxed text-justify font-medium">We prioritize the security of your business assets. Aggressive marketing can often lead to account bans, a nightmare for any business. Mathaniya Technologies has integrated cutting-edge Anti-Block technology that simulates human behavior. With features like variable time delays, sleep modes, and friendly sending algorithms, our software mimics manual typing and sending patterns. This 'Human Simulation' layer provides a robust shield, allowing you to scale your campaigns aggressively yet safely, maintaining the longevity and reputation of your business numbers.</p>
+                                    </div>
+
+                                    <!-- Service 5 (Full Width for Emphasis) -->
+                                    <div class="group bg-slate-50 p-6 rounded-2xl border-l-8 border-orange-500 shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden md:col-span-2">
+                                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"><i class="fas fa-code text-6xl text-orange-600"></i></div>
+                                        <h4 class="text-xl font-black text-orange-800 uppercase mb-3 flex items-center gap-2">
+                                            <span class="bg-orange-100 p-2 rounded-lg"><i class="fas fa-laptop-code text-orange-600"></i></span> 
+                                            5. Professional Web Development
+                                        </h4>
+                                        <p class="text-slate-600 text-sm leading-relaxed text-justify font-medium">A strong digital identity goes beyond messaging; it starts with a professional online address. Our exclusive ₹999 Business Website offer is designed to give every small and medium enterprise a corporate-grade digital face. In a mobile-first world, our websites are responsive, fast-loading, and SEO-friendly. We integrate your WhatsApp marketing funnel directly into your website, creating a cohesive ecosystem where visitors from the web can instantly connect with you on chat. This synergy between web presence and direct messaging creates a powerful conversion loop that drives sales and builds brand authority.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Closing Quote Box -->
+                                <div class="bg-gradient-to-r from-emerald-600 to-teal-700 p-6 md:p-8 rounded-3xl shadow-lg text-white text-center relative overflow-hidden mb-8">
+                                    <i class="fas fa-quote-left absolute top-4 left-6 text-emerald-400/30 text-6xl"></i>
+                                    <i class="fas fa-quote-right absolute bottom-4 right-6 text-emerald-400/30 text-6xl"></i>
+                                    <p class="italic font-bold text-sm md:text-xl relative z-10 leading-relaxed font-['Outfit']">"Mathaniya Technologies is not just a software provider; we are your growth partners. From establishing your digital footprint with a stunning website to automating your customer outreach, we provide an end-to-end ecosystem for success."</p>
+                                </div>
+
+                                <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-slate-100 pt-8">
+                                    <div class="flex gap-4">
+                                        <span class="bg-slate-50 p-3 rounded-xl shadow-sm text-slate-400 hover:text-pink-500 cursor-pointer transition-colors"><i class="fab fa-instagram text-xl"></i></span>
+                                        <span class="bg-slate-50 p-3 rounded-xl shadow-sm text-slate-400 hover:text-blue-500 cursor-pointer transition-colors"><i class="fab fa-facebook-f text-xl"></i></span>
+                                    </div>
+                                    <a href="javascript:location.href=getWALink('Direct Chat with Founder')" class="w-full md:w-auto bg-[#25D366] text-white px-10 py-4 rounded-2xl font-black uppercase shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-3">
+                                        <i class="fab fa-whatsapp text-2xl"></i> Contact Directly
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Hero -->
-    <section class="w-full p-0 m-0 leading-none relative bg-[#075E54]">
-        <img src="https://lh3.googleusercontent.com/d/1CP-Jw9zdX4h9-P-MVl_9QMXM9sZlTejO" alt="Banner" class="w-full h-auto block object-cover" onerror="this.onerror=null; this.src='https://placehold.co/1500x500/065f46/ffffff?text=Image+Permission+Error';">
+    <!-- Section 3: Hero Section -->
+    <section class="w-full p-0 m-0 leading-none relative bg-white">
+        <img src="https://lh3.googleusercontent.com/d/1CP-Jw9zdX4h9-P-MVl_9QMXM9sZlTejO" alt="Hero Banner" class="hero-banner-img" fetchpriority="high" loading="eager" decoding="sync" onerror="this.src='https://placehold.co/1500x500/065f46/ffffff?text=Premium+Marketing';">
+        <div class="absolute bottom-4 left-4 md:bottom-28 md:left-16 z-30 pointer-events-auto">
+            <button onclick="openModal('founder')" class="group cursor-pointer bg-white/5 backdrop-blur-sm border border-white/40 text-white px-6 py-2.5 md:px-14 md:py-7 rounded-full shadow-2xl hover:bg-white/15 transition-all flex items-center gap-2 md:gap-4 active:scale-95">
+                <i class="fas fa-user-tie text-xs md:text-4xl drop-shadow-md"></i>
+                <span class="text-[12px] md:text-4xl font-black drop-shadow-lg" style="font-family: 'Kaushan Script', cursive;">Meet Founder</span>
+            </button>
+        </div>
     </section>
 
-    <!-- Ad Bar -->
-    <div class="relative z-20 overflow-hidden py-4 md:py-6" 
-         style="background: linear-gradient(180deg, #34d399 0%, #059669 50%, #064e46 100%); 
-                border-top: 1px solid rgba(255,255,255,0.5); 
-                border-bottom: 1px solid rgba(255,255,255,0.5); 
-                box-shadow: 0 10px 20px rgba(0,0,0,0.5);">
-        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center text-white">
-            <div class="flex items-center space-x-3 md:space-x-4 max-w-[70%]">
-                <span class="bg-white text-emerald-800 font-black px-3 py-1 rounded-md text-[10px] md:text-xs shrink-0 shadow-[0_3px_0_#065f46] transform active:translate-y-1 active:shadow-none transition-all uppercase tracking-wide border border-emerald-100" data-hi="Our Services" data-en="Our Services">Our Services</span>
-                <p id="midAdText" class="text-xs md:text-lg font-bold ad-fade truncate drop-shadow-md text-white/95 tracking-wide" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">लोड हो रहा है...</p>
-            </div>
-            <a id="midAdBtn" href="#" class="bg-gradient-to-b from-white to-gray-100 text-emerald-900 px-4 py-2 md:px-6 md:py-2.5 rounded-xl font-black text-[10px] md:text-xs uppercase shadow-[0_4px_0_#022c22] hover:translate-y-[2px] hover:shadow-[0_2px_0_#022c22] transition-all shrink-0 border border-white/50">विजिट</a>
+    <!-- Section 4: Ad Ticker -->
+    <div class="ticker-wrap py-2 md:py-4 shadow-sm flex items-center">
+        <div class="shrink-0 z-10 bg-white px-2 md:px-4 border-r border-slate-100">
+            <span class="bg-emerald-600 text-white font-black px-2 py-1 rounded text-[10px] md:text-xs uppercase shadow-sm">Exclusive</span>
+        </div>
+        <div class="overflow-hidden flex-1 relative">
+            <div class="ticker-move" id="tickerContent"></div>
         </div>
     </div>
 
     <!-- Features -->
-    <section id="features" class="py-12 md:py-20 px-2 md:px-4 bg-slate-50">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-2xl md:text-5xl font-black text-center mb-10 md:mb-16 text-[#075E54]" style="font-family: 'Outfit', sans-serif;" data-hi="हमारे व्हाट्सएप मार्केटिंग सॉफ्टवेयर के फीचर्स" data-en="Our WhatsApp Marketing Software Features">हमारे व्हाट्सएप मार्केटिंग सॉफ्टवेयर के फीचर्स</h2>
-            <div id="featureGrid" class="flex flex-col gap-3 md:gap-6"></div>
+    <section id="features" class="pb-12 md:pb-20 pt-8 px-2 md:px-4 bg-slate-50">
+        <div class="max-w-6xl mx-auto"><div id="featureGrid" class="flex flex-col gap-3 md:gap-6 mt-6"></div></div>
+    </section>
+
+    <!-- NEW: MAST SHANDAR CTA PATTI (Between Features & Video) - UPDATED TO GREEN THEME -->
+    <section class="relative w-full overflow-hidden bg-gradient-to-r from-emerald-700 via-teal-600 to-emerald-500 py-10 md:py-14 shadow-2xl z-20 border-y-4 border-emerald-300">
+        <!-- Animated Background Effect -->
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent animate-pulse"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+            <!-- Text Content -->
+            <div class="text-center md:text-left flex-1">
+                <h3 class="text-2xl md:text-5xl font-black uppercase font-['Outfit'] tracking-wide leading-tight text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.3)]">
+                    🚀 Want to <span class="text-yellow-300 underline decoration-wavy decoration-2 underline-offset-4">Automate</span> Your Business?
+                </h3>
+                <p class="text-sm md:text-xl font-bold text-white/95 mt-2 bg-emerald-900/30 inline-block px-4 py-1 rounded-full border border-emerald-400/30">Don't waste time manually! Get the Power of AI Tools Today.</p>
+            </div>
+            
+            <!-- Button - Adjusted colors to match Green theme -->
+            <a href="javascript:location.href=getWALink('Mid Page Big CTA')" class="group relative bg-white text-emerald-800 border-4 border-emerald-200 px-8 md:px-12 py-3 md:py-5 rounded-full font-black text-lg md:text-2xl shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:scale-105 hover:shadow-[0_0_40px_rgba(52,211,153,0.6)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 shrink-0">
+                <i class="fab fa-whatsapp text-3xl md:text-4xl text-[#25D366]"></i> 
+                <span>GET ACCESS NOW</span>
+                <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform text-emerald-600"></i>
+            </a>
         </div>
     </section>
 
-    <!-- Video Section -->
-    <section class="py-16 bg-slate-100 px-0 overflow-hidden">
-        <div class="flex flex-col gap-0">
-            <div class="max-w-4xl mx-auto px-4 w-full mb-12">
-                <h2 class="text-3xl md:text-4xl font-black text-center text-[#075E54] mb-10" style="font-family: 'Outfit', sans-serif;" data-hi="सॉफ्टवेयर के बारे में" data-en="About Software">About Software</h2>
-                <div class="w-full flex flex-col items-center">
-                    <div class="video-frame-3d w-[90%] max-w-[350px] md:max-w-[320px]">
-                        <!-- Visual Notch for Phone Effect -->
-                        <div class="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-4 bg-black/50 rounded-full z-20 pointer-events-none backdrop-blur-sm border border-white/10"></div>
-                        <div class="video-inner-container">
-                             <!-- ADDED BLOCKER DIV -->
-                            <div class="absolute top-0 right-0 w-20 h-20 z-50 cursor-default"></div>
-                            <div class="video-box" style="aspect-ratio: 9/16;"><iframe id="v1" src="" allowfullscreen></iframe></div>
-                        </div>
-                    </div>
+    <!-- Section: Live Video Demos (First Video Full Width on Mobile) -->
+    <section id="demos" class="py-12 px-4 bg-white border-t border-slate-100">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- UPDATED HEADING 1: Stylish Strip + Handwriting Font -->
+            <div class="text-center mb-8">
+                <div class="inline-block relative group cursor-default">
+                    <!-- The Background Strip (Patti) -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-500 transform -skew-x-12 rounded shadow-lg group-hover:scale-105 transition-transform duration-300"></div>
+                    <!-- The Text -->
+                    <h2 class="relative z-10 text-2xl md:text-4xl text-white px-8 py-1" style="font-family: 'Kaushan Script', cursive; text-shadow: 2px 2px 0px rgba(0,0,0,0.1);">
+                        About Software
+                    </h2>
                 </div>
             </div>
-            <a href="javascript:location.href=getWALink('VideoSectionDivider')" class="block w-full bg-[#075E54] border-y-4 border-[#25D366] py-5 my-8 shadow-2xl relative overflow-hidden group cursor-pointer hover:bg-[#064e46] transition-colors">
-                 <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
-                 <div class="flex justify-center items-center gap-2 md:gap-3 text-white px-2">
-                    <i class="fab fa-whatsapp text-2xl md:text-4xl animate-bounce"></i>
-                    <span class="font-black text-sm md:text-2xl tracking-widest uppercase font-['Outfit'] text-center" data-hi="सॉफ्टवेयर खरीदने के लिए संपर्क करें" data-en="Click to Buy Software Now">Click to Buy Software Now</span>
-                    <i class="fas fa-chevron-right text-lg md:text-xl animate-pulse"></i>
-                 </div>
-            </a>
-            
-            <!-- Video 2 -->
-            <div id="demo" class="max-w-4xl mx-auto px-4 w-full mt-4 scroll-mt-28">
-                <div class="w-full flex flex-col items-center">
-                    <h3 class="text-2xl md:text-3xl font-black text-[#075E54] mb-8 text-center uppercase tracking-wide border-b-4 border-[#25D366] pb-2 inline-block" style="font-family: 'Outfit', sans-serif;" data-hi="सॉफ्टवेयर डेमो" data-en="Software Demo">Software Demo</h3>
-                    <div class="video-frame-3d w-full max-w-3xl" style="animation-direction: reverse;"> 
-                        <div class="video-inner-container">
-                            <!-- ADDED BLOCKER DIV -->
-                            <div class="absolute top-0 right-0 w-20 h-20 z-50 cursor-default"></div>
-                            <div class="video-box" style="aspect-ratio: 4 / 3;"><iframe id="v2" src="" allowfullscreen></iframe></div>
-                        </div>
+
+            <!-- Layout: Up/Down arrangement -->
+            <div class="flex flex-col gap-8 md:gap-12 items-center">
+                
+                <!-- Video 1: 9:16 Aspect Ratio (Instagram Reel Size) -->
+                <!-- UPDATED: 'md:max-w-sm' ensures it is restricted on desktop but takes FULL WIDTH (w-full) on mobile -->
+                <div class="w-full md:max-w-sm rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-200 relative bg-black group" style="aspect-ratio: 9/16;">
+                    <iframe id="v1" class="w-full h-full" allow="autoplay" loading="lazy"></iframe>
+                    <!-- Overlay to block pop-out button -->
+                    <div class="absolute top-0 right-0 w-16 h-16 z-10 bg-transparent"></div>
+                </div>
+
+                <!-- UPDATED HEADING 2: Stylish Strip + Handwriting Font -->
+                <div class="text-center mt-4">
+                    <div class="inline-block relative group cursor-default">
+                        <!-- The Background Strip (Patti) -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-500 transform -skew-x-12 rounded shadow-lg group-hover:scale-105 transition-transform duration-300"></div>
+                        <!-- The Text -->
+                        <h2 class="relative z-10 text-2xl md:text-4xl text-white px-8 py-1" style="font-family: 'Kaushan Script', cursive; text-shadow: 2px 2px 0px rgba(0,0,0,0.1);">
+                            Software Live Demo
+                        </h2>
                     </div>
                 </div>
+
+                <!-- Video 2: 4:3 Aspect Ratio (No Change) -->
+                <div class="w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-200 relative bg-black group" style="aspect-ratio: 4/3;">
+                    <iframe id="v2" class="w-full h-full" allow="autoplay" loading="lazy"></iframe>
+                    <!-- Overlay to block pop-out button -->
+                    <div class="absolute top-0 right-0 w-16 h-16 z-10 bg-transparent"></div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -291,761 +532,394 @@
     <!-- Pricing Section -->
     <section id="pricing" class="py-12 md:py-20 bg-slate-900 px-0">
         <div class="max-w-7xl mx-auto text-center px-4">
-            <h2 class="text-2xl md:text-4xl font-black mb-8 md:mb-16 text-white" data-hi="प्राइसिंग प्लान चुनें" data-en="Select Pricing Plan">प्राइसिंग प्लान चुनें</h2>
+            <h2 class="text-2xl md:text-4xl font-black mb-8 md:mb-16 text-white" data-hi="प्राइसिंग प्लान चुनें" data-en="WhatsApp Marketing Software Subscription Plan">Select Pricing Plan</h2>
         </div>
-        <!-- UPDATED: Reduced height on mobile (min-h-[300px]) to remove empty space -->
         <div id="plansGrid" class="grid grid-cols-3 gap-2 md:gap-8 px-2 md:px-8 max-w-7xl mx-auto items-stretch"></div>
     </section>
 
-    <!-- Services (Existing Banners) -->
-    <section id="other-services" class="py-12 md:py-16 bg-white w-full">
+    <!-- More Solutions (Banners) -->
+    <section id="services" class="py-12 md:py-16 bg-white w-full">
         <div class="w-full">
-            <h2 class="text-2xl md:text-3xl font-black text-center mb-8 md:mb-10 italic px-4 text-slate-800" data-hi="अन्य बेहतरीन समाधान" data-en="More Solutions">अन्य बेहतरीन समाधान</h2>
+            <h2 class="text-2xl md:text-3xl font-black text-center mb-8 md:mb-10 italic px-4 text-slate-800" data-hi="अन्य बेहतरीन समाधान" data-en="More Solutions">More Solutions</h2>
             <div id="serviceGrid" class="flex flex-col gap-4 w-full md:max-w-4xl md:mx-auto px-0 md:px-4"></div>
         </div>
     </section>
-    
-    <!-- NEW: Comprehensive Services Section (Colorful 3D) -->
-    <section id="detailed-services" class="py-20 px-4 relative overflow-hidden" style="background: linear-gradient(135deg, #f3f4f6 0%, #e0f2fe 50%, #d1fae5 100%);">
-        
-        <!-- Decorative Elements for "Colorful" feel -->
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            <div class="absolute top-[-10%] right-[-5%] w-96 h-96 rounded-full bg-emerald-300 blur-[100px] opacity-30"></div>
-            <div class="absolute bottom-[-10%] left-[-5%] w-96 h-96 rounded-full bg-blue-300 blur-[100px] opacity-30"></div>
-        </div>
 
+    <!-- Premium Services (Restored Colorful Design) -->
+    <section id="detailed-services" class="py-20 px-4 relative overflow-hidden" style="background: linear-gradient(135deg, #e0f2fe 0%, #d1fae5 50%, #f0f9ff 100%);">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-40">
+            <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-blue-300 blur-3xl mix-blend-multiply"></div>
+            <div class="absolute top-1/2 right-0 w-80 h-80 rounded-full bg-emerald-300 blur-3xl mix-blend-multiply"></div>
+        </div>
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-16">
-                <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold tracking-wider uppercase text-[10px] md:text-xs px-4 py-1.5 rounded-full shadow-lg border border-emerald-400/30">Total Business Growth</span>
-                <h2 class="text-3xl md:text-5xl font-black text-slate-800 mt-6 font-['Outfit'] drop-shadow-sm" data-hi="हमारी प्रीमियम सेवाएँ" data-en="Our Premium Services">
-                    Our Premium Services
-                </h2>
-                <p class="mt-4 text-slate-700 max-w-2xl mx-auto text-sm md:text-lg leading-relaxed font-medium">
-                    We provide complete digital marketing and business growth solutions designed to help brands grow, engage customers, and increase sales.
-                </p>
+                <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold tracking-wider uppercase text-[10px] md:text-xs px-4 py-1.5 rounded-full shadow-lg">Our Expertise</span>
+                <!-- UPDATED: "Our Other Services" in Handwriting Style -->
+                <h2 class="text-3xl md:text-5xl font-black text-slate-800 mt-6" style="font-family: 'Kaushan Script', cursive;" data-hi="हमारी अन्य सेवाएँ" data-en="Our Other Services">Our Other Services</h2>
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 1. Digital Marketing Services -->
-                <div class="group bg-white/60 backdrop-blur-xl rounded-[2rem] p-1 border-2 border-blue-200/50 hover:border-blue-400 transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] hover:-translate-y-2">
-                    <div class="h-full rounded-[1.8rem] p-8 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-blue-500 w-24 h-24 rounded-bl-[4rem] -mr-6 -mt-6 opacity-20 group-hover:scale-150 transition-transform duration-500"></div>
-                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg mb-6 group-hover:rotate-12 transition-transform duration-300">
-                            <i class="fas fa-bullhorn"></i>
-                        </div>
-                        <h3 class="text-2xl font-black text-slate-800 mb-4 font-['Outfit']">Digital Marketing</h3>
-                        <p class="text-sm text-slate-700 mb-6 leading-relaxed border-b border-blue-200/50 pb-4 font-medium">Grow your brand visibility, traffic, and conversions with result-driven digital marketing solutions.</p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-search text-blue-600 mt-1"></i> Search Engine Optimization (SEO)</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-mobile-alt text-blue-600 mt-1"></i> Social Media Marketing</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fab fa-whatsapp text-blue-600 mt-1"></i> WhatsApp Marketing</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-envelope text-blue-600 mt-1"></i> Email Marketing</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-crosshairs text-blue-600 mt-1"></i> Lead Generation Campaigns</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- 2. Content & Creative Services -->
-                <div class="group bg-white/60 backdrop-blur-xl rounded-[2rem] p-1 border-2 border-orange-200/50 hover:border-orange-400 transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(249,115,22,0.3)] hover:-translate-y-2">
-                    <div class="h-full rounded-[1.8rem] p-8 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-orange-500 w-24 h-24 rounded-bl-[4rem] -mr-6 -mt-6 opacity-20 group-hover:scale-150 transition-transform duration-500"></div>
-                        <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg mb-6 group-hover:rotate-12 transition-transform duration-300">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h3 class="text-2xl font-black text-slate-800 mb-4 font-['Outfit']">Content & Creative</h3>
-                        <p class="text-sm text-slate-700 mb-6 leading-relaxed border-b border-orange-200/50 pb-4 font-medium">High-quality content and creative solutions that attract, engage, and convert your audience.</p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-brain text-orange-600 mt-1"></i> Content Idea & Strategy</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-pen-nib text-orange-600 mt-1"></i> Marketing Content Writing</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-bullhorn text-orange-600 mt-1"></i> Ad Copywriting</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-video text-orange-600 mt-1"></i> Marketing Video Creation</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-image text-orange-600 mt-1"></i> Banner & Poster Design</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- 3. Social Media Management -->
-                 <div class="group bg-white/60 backdrop-blur-xl rounded-[2rem] p-1 border-2 border-pink-200/50 hover:border-pink-400 transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(236,72,153,0.3)] hover:-translate-y-2">
-                    <div class="h-full rounded-[1.8rem] p-8 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-pink-500 w-24 h-24 rounded-bl-[4rem] -mr-6 -mt-6 opacity-20 group-hover:scale-150 transition-transform duration-500"></div>
-                        <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg mb-6 group-hover:rotate-12 transition-transform duration-300">
-                            <i class="fas fa-share-alt"></i>
-                        </div>
-                        <h3 class="text-2xl font-black text-slate-800 mb-4 font-['Outfit']">Social Media Mgmt</h3>
-                        <p class="text-sm text-slate-700 mb-6 leading-relaxed border-b border-pink-200/50 pb-4 font-medium">End-to-end social media management to build, engage, and grow your online presence.</p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-user-circle text-pink-600 mt-1"></i> Account Management</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-calendar-alt text-pink-600 mt-1"></i> Content Planning & Scheduling</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-camera text-pink-600 mt-1"></i> Post, Reel & Story Mgmt</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-comments text-pink-600 mt-1"></i> Comment & Inbox Handling</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-chart-line text-pink-600 mt-1"></i> Performance Reports</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- 4. Graphic Designing -->
-                <div class="group bg-white/60 backdrop-blur-xl rounded-[2rem] p-1 border-2 border-teal-200/50 hover:border-teal-400 transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(20,184,166,0.3)] hover:-translate-y-2">
-                    <div class="h-full rounded-[1.8rem] p-8 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-teal-500 w-24 h-24 rounded-bl-[4rem] -mr-6 -mt-6 opacity-20 group-hover:scale-150 transition-transform duration-500"></div>
-                        <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg mb-6 group-hover:rotate-12 transition-transform duration-300">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <h3 class="text-2xl font-black text-slate-800 mb-4 font-['Outfit']">Graphic Design</h3>
-                        <p class="text-sm text-slate-700 mb-6 leading-relaxed border-b border-teal-200/50 pb-4 font-medium">Professional graphic designs that strengthen your brand identity and marketing impact.</p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-tag text-teal-600 mt-1"></i> Logo & Brand Identity</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-ruler-combined text-teal-600 mt-1"></i> Social Media Graphics</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-file-alt text-teal-600 mt-1"></i> Marketing Posters & Flyers</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-business-time text-teal-600 mt-1"></i> Business Branding Materials</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-desktop text-teal-600 mt-1"></i> Website & App Graphics</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- 5. Website & Tech -->
-                <div class="group bg-white/60 backdrop-blur-xl rounded-[2rem] p-1 border-2 border-indigo-200/50 hover:border-indigo-400 transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(99,102,241,0.3)] hover:-translate-y-2">
-                    <div class="h-full rounded-[1.8rem] p-8 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-indigo-500 w-24 h-24 rounded-bl-[4rem] -mr-6 -mt-6 opacity-20 group-hover:scale-150 transition-transform duration-500"></div>
-                        <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg mb-6 group-hover:rotate-12 transition-transform duration-300">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <h3 class="text-2xl font-black text-slate-800 mb-4 font-['Outfit']">Website & Tech</h3>
-                        <p class="text-sm text-slate-700 mb-6 leading-relaxed border-b border-indigo-200/50 pb-4 font-medium">Modern, fast, and scalable web and automation solutions for your business.</p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-laptop-code text-indigo-600 mt-1"></i> Web Design & Development</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-file-invoice text-indigo-600 mt-1"></i> Landing Page Design</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-bolt text-indigo-600 mt-1"></i> Website Optimization</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-link text-indigo-600 mt-1"></i> CRM & Automation Integration</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-chart-bar text-indigo-600 mt-1"></i> Analytics & Tracking Setup</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- 6. Why Choose Us -->
-                <div class="group bg-white/60 backdrop-blur-xl rounded-[2rem] p-1 border-2 border-yellow-200/50 hover:border-yellow-400 transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(234,179,8,0.3)] hover:-translate-y-2">
-                    <div class="h-full rounded-[1.8rem] p-8 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-yellow-500 w-24 h-24 rounded-bl-[4rem] -mr-6 -mt-6 opacity-20 group-hover:scale-150 transition-transform duration-500"></div>
-                        <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg mb-6 group-hover:rotate-12 transition-transform duration-300">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h3 class="text-2xl font-black text-slate-800 mb-4 font-['Outfit']">Why Choose Us</h3>
-                        <p class="text-sm text-slate-700 mb-6 leading-relaxed border-b border-yellow-200/50 pb-4 font-medium">Trusted digital solutions focused on growth, quality, and long-term success.</p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-check-circle text-yellow-600 mt-1"></i> Result-driven strategies</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-user-tie text-yellow-600 mt-1"></i> Professional & Experienced Team</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-tools text-yellow-600 mt-1"></i> Latest Tools & Technologies</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-file-contract text-yellow-600 mt-1"></i> Transparent Reporting</li>
-                            <li class="flex items-start gap-3 text-slate-800 text-sm font-bold"><i class="fas fa-handshake text-yellow-600 mt-1"></i> Dedicated Support</li>
-                        </ul>
-                    </div>
-                </div>
-
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="detailedServicesGrid">
+                <!-- Data populated via script below -->
             </div>
         </div>
     </section>
 
-    <!-- NEW: Special Offer Section -->
+    <!-- Special Offer -->
     <section id="special-offer" class="py-16 px-4 bg-gradient-to-br from-blue-50 via-indigo-50 to-white relative overflow-hidden">
-        <!-- Decoration -->
-        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-
         <div class="max-w-4xl mx-auto relative z-10 text-center">
-            <!-- Badge -->
-            <div class="inline-block mb-6">
-                <span class="bg-red-500 text-white text-xs md:text-sm font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg animate-bounce border-2 border-red-200">
-                    🔥 Special Offer
-                </span>
-            </div>
-
-            <!-- Main Heading -->
-            <h2 class="text-3xl md:text-5xl font-black text-slate-800 mb-6 font-['Outfit'] leading-tight">
-                Single Page Business Information Website in Just <span class="text-blue-600">₹999</span>
-            </h2>
-
-            <!-- Description -->
-            <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-3xl mx-auto font-medium leading-relaxed">
-                Get a professional, mobile-friendly website to showcase your business, services, and contact details at an affordable price.
-            </p>
-            
-            <!-- Feature Card -->
-            <div class="bg-white rounded-3xl p-6 md:p-10 shadow-2xl border-2 border-blue-100 transform hover:-translate-y-2 transition-transform duration-300">
+            <div class="inline-block mb-6"><span class="bg-red-500 text-white text-xs md:text-sm font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg border-2 border-red-200 animate-bounce">🔥 Special Offer</span></div>
+            <h2 class="text-3xl md:text-5xl font-black text-slate-800 mb-6 font-['Outfit'] leading-tight">Single Page Business Website in <span class="text-blue-600">₹999</span></h2>
+            <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-3xl mx-auto font-medium">Get a professional, mobile-friendly website to showcase your business.</p>
+            <div class="bg-white rounded-3xl p-6 md:p-10 shadow-2xl border-2 border-blue-100 transform hover:-translate-y-2 transition-all">
                 <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8">
-                    <div class="shrink-0 bg-blue-100 p-4 rounded-full text-blue-600">
-                        <i class="fas fa-laptop-code text-4xl"></i>
-                    </div>
-                    <div class="text-left">
-                        <p class="text-slate-700 text-base md:text-lg leading-relaxed font-semibold">
-                            Professional single-page website with business information, services, and contact details—quick, simple, and affordable.
-                        </p>
-                        <div class="mt-4 flex flex-wrap gap-2">
-                            <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-lg text-xs font-bold">✅ Mobile Friendly</span>
-                            <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-lg text-xs font-bold">✅ Click to Call</span>
-                            <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-lg text-xs font-bold">✅ Social Links</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 md:mt-0 shrink-0 w-full md:w-auto">
-                        <a href="javascript:location.href=getWALink('SpecialOfferWebsite')" class="block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl font-black uppercase text-sm md:text-base shadow-lg hover:shadow-blue-500/50 hover:scale-105 transition-all text-center">
-                            Get It Now
-                        </a>
-                    </div>
+                    <div class="shrink-0 bg-blue-100 p-4 rounded-full text-blue-600"><i class="fas fa-laptop-code text-4xl"></i></div>
+                    <div class="text-left"><p class="text-slate-700 text-base md:text-lg leading-relaxed font-semibold">Professional single-page website with business information, services, and contact details—quick, simple, and affordable.</p></div>
+                    <div class="mt-4 md:mt-0 shrink-0 w-full md:w-auto"><a href="javascript:location.href=getWALink('SpecialOfferWebsite')" class="block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl font-black uppercase text-sm md:text-base shadow-lg hover:scale-105 transition-all text-center">Get It Now</a></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-white pt-16 pb-28 px-4">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
-            <div>
-                <!-- Updated Brand Name in Footer -->
-                <span class="text-2xl font-black bg-gradient-to-r from-emerald-400 to-teal-200 bg-clip-text text-transparent" style="font-family: 'Kaushan Script', cursive;">
-                    <span id="footPrefix">WhatsApp Marketing</span>
-                    <span id="footSuffix"> Software</span>
-                </span>
-                <p class="mt-4 text-slate-400 text-sm" data-hi="प्रोफेशनल व्हाट्सएप मार्केटिंग समाधानों के साथ अपना बिजनेस बढ़ाएं।" data-en="Grow your business with professional WhatsApp marketing solutions.">प्रोफेशनल व्हाट्सएप मार्केटिंग समाधानों के साथ अपना बिजनेस बढ़ाएं।</p>
-            </div>
-            <div>
-                <h4 class="font-bold mb-6" data-hi="जरूरी लिंक्स" data-en="Quick Links">जरूरी लिंक्स</h4>
-                <!-- Updated Links with Anchors to Sections -->
-                <div class="grid grid-cols-2 gap-4 text-sm text-slate-400 cursor-pointer">
-                    <a href="#" class="hover:text-emerald-400 transition-colors">Home Page</a>
-                    <a href="#features" class="hover:text-emerald-400 transition-colors">Features</a>
-                    <a href="#pricing" class="hover:text-emerald-400 transition-colors">Pricing</a>
-                    <!-- Demo link now scrolls to the second video (#demo) -->
-                    <a href="#demo" class="hover:text-emerald-400 transition-colors">Demo</a>
+    <!-- UPDATED: Professional Footer Section -->
+    <footer id="contact" class="bg-slate-900 text-white pt-16 pb-14 md:pb-12 px-4 relative overflow-hidden border-t-4 border-emerald-500">
+        <!-- Decoration Background -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-900/20 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-left relative z-10">
+            <!-- Brand Info -->
+            <div class="space-y-6">
+                <span class="text-3xl font-black bg-gradient-to-r from-emerald-400 to-teal-200 bg-clip-text text-transparent" style="font-family: 'Kaushan Script', cursive;">Mathaniya Technologies</span>
+                <p class="text-slate-400 text-base leading-relaxed">
+                    We provide professional digital marketing, website, and business growth solutions to help brands build a strong online presence and achieve real results.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-emerald-500 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-emerald-500 transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-emerald-500 transition-colors"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
+
+            <!-- Services List -->
             <div>
-                <h4 class="font-bold mb-6" data-hi="संपर्क करें" data-en="Reach Us">संपर्क करें</h4>
-                <p class="text-sm text-slate-400"><i class="fas fa-phone mr-2"></i> +91 7851848679</p>
-                <p class="text-sm text-slate-400 mt-2"><i class="fas fa-envelope mr-2"></i> info@wasoftware.in</p>
+                <h4 class="text-xl font-bold mb-6 text-white border-b-2 border-emerald-500 pb-2 inline-block">Services</h4>
+                <ul class="space-y-3 text-slate-400 text-sm">
+                    <li class="hover:text-emerald-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Digital Marketing</li>
+                    <li class="hover:text-emerald-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> WhatsApp Marketing</li>
+                    <li class="hover:text-emerald-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Content & Creative Services</li>
+                    <li class="hover:text-emerald-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Social Media Management</li>
+                    <li class="hover:text-emerald-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Graphic Designing</li>
+                    <li class="hover:text-emerald-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Website Development</li>
+                </ul>
             </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-xl font-bold mb-6 text-white border-b-2 border-emerald-500 pb-2 inline-block">Quick Links</h4>
+                <ul class="space-y-3 text-slate-400 text-sm">
+                    <li><a href="#" class="hover:text-emerald-400 transition-colors flex items-center gap-2"><i class="fas fa-link text-[10px]"></i> Home</a></li>
+                    <li><a href="#detailed-services" class="hover:text-emerald-400 transition-colors flex items-center gap-2"><i class="fas fa-link text-[10px]"></i> Our Services</a></li>
+                    <li><a href="javascript:openModal('founder')" class="hover:text-emerald-400 transition-colors flex items-center gap-2"><i class="fas fa-link text-[10px]"></i> About Us</a></li>
+                    <li><a href="#contact" class="hover:text-emerald-400 transition-colors flex items-center gap-2"><i class="fas fa-link text-[10px]"></i> Contact Us</a></li>
+                    <li><a onclick="openModal('privacy')" class="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+                    <li><a onclick="openModal('terms')" class="hover:text-emerald-400 transition-colors">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div>
+                <h4 class="text-xl font-bold mb-6 text-white border-b-2 border-emerald-500 pb-2 inline-block">Contact Information</h4>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-emerald-500/10 text-emerald-500 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-phone-alt"></i></div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase font-bold">WhatsApp Chat Only</p>
+                            <a href="tel:+917851848679" class="text-slate-300 font-bold hover:text-emerald-400 transition-colors">+91 7851848679</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-emerald-500/10 text-emerald-500 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase font-bold">Email Support</p>
+                            <a href="mailto:contact@mathaniyatechnologies.com" class="text-slate-300 font-bold hover:text-emerald-400 transition-colors break-all">contact@mathaniyatechnologies.com</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-emerald-500/10 text-emerald-500 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase font-bold">Our Location</p>
+                            <p class="text-slate-300 font-bold">Mathaniya Technologies –Office B-78, RIICO Commercial Area, Road No. 8, Basni 2nd Phase, Jodhpur – 342005</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Bar -->
+        <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-800 text-center">
+            <p class="text-slate-500 text-sm font-medium">
+                Copyright © <span class="text-emerald-500">Mathaniya Technologies</span>. All Rights Reserved.
+            </p>
         </div>
     </footer>
 
-    <!-- Bottom Ad Bar -->
-    <div class="fixed bottom-0 left-0 w-full bg-white border-t-2 border-emerald-500 shadow-2xl z-[999] py-3 px-4 flex items-center">
-        <div class="more-service-tag" data-hi="अन्य सेवाएं" data-en="Other Services">अन्य सेवाएं</div>
-        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
-            <p id="bottomAdText" class="text-slate-800 font-bold text-xs md:text-sm ad-fade truncate pr-4">लोड हो रहा है...</p>
-            <a id="adBottomBtn" href="#" class="bg-emerald-600 text-white px-6 py-2 rounded-xl font-black text-[10px] md:text-xs uppercase shadow-lg flex-shrink-0">विजिट</a>
+    <!-- Bottom Fixed Ticker Placeholder (Bottom Ad Bar) -->
+    <!-- Added 'relative' class to parent for absolute positioning of label -->
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t-2 border-emerald-500 shadow-2xl z-[999] py-2 md:py-3 px-2 md:px-4 flex items-center justify-center">
+        
+        <!-- UPDATED: Compact Floating Label (Half up/down) -->
+        <div class="offer-label-pro">
+            <i class="fas fa-bolt text-yellow-300 animate-pulse"></i> LATEST OFFER
+        </div>
+
+        <div class="max-w-7xl mx-auto w-full flex items-center justify-between">
+            
+            <div class="flex items-center overflow-hidden flex-1 mr-2">
+                
+                <p id="bottomAdText" class="text-slate-800 font-bold text-xs md:text-sm truncate pl-2">Loading today's deals...</p>
+            </div>
+
+            <a id="adBottomBtn" href="#" class="bg-emerald-600 text-white px-5 py-2 rounded-xl font-black text-[10px] md:text-xs uppercase shadow-lg flex-shrink-0 hover:bg-emerald-700 transition-colors">VISIT</a>
         </div>
     </div>
-
+    
     <!-- Floating WA -->
-    <a href="javascript:location.href=getWALink('Floating')" class="fixed bottom-24 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl z-[1000] hover:scale-110 transition cursor-pointer">
-        <i class="fab fa-whatsapp text-3xl"></i>
-    </a>
+    <a href="javascript:location.href=getWALink('Floating')" class="fixed bottom-24 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl z-[1000] hover:scale-110 transition cursor-pointer"><i class="fab fa-whatsapp text-3xl"></i></a>
 
     <script>
         const SITE_CONFIG = {
-            siteNamePrefix: "WhatsApp Marketing", 
-            siteNameSuffix: " Software", 
             whatsappNumber: "917851848679",
             video1: "https://drive.google.com/file/d/1IDrSTriWCn_x8-jOTgPW_jzO2zuMLLfX/preview", 
             video2: "https://drive.google.com/file/d/1WIXvqa1y0FZFPd4awUeBWSleyF2IXj0R/preview",
-
-            // Updated midAds: Marketing for all 15 Features (Looping)
-            midAds: [
-                { hi: "🚀 एक क्लिक में हजारों मैसेज भेजें (Bulk Sender)", en: "🚀 Send 1000s of msgs in 1 click (Bulk Sender)", btnHi: "अभी खरीदें", btnEn: "Buy Now", link: "https://Wa.me/917851848679?text=I+want+to+buy+Bulk+Sender+Feature" },
-                { hi: "🤖 24/7 ऑटो रिप्लाई चैटबॉट (AI Chatbot)", en: "🤖 24/7 Auto Reply Chatbot", btnHi: "डेमो देखें", btnEn: "See Demo", link: "https://Wa.me/917851848679?text=I+want+AI+Chatbot+Demo" },
-                { hi: "👥 किसी भी ग्रुप का डाटा निकालें (Group Grabber)", en: "👥 Extract Data from Groups", btnHi: "कैसे करें?", btnEn: "How?", link: "https://Wa.me/917851848679?text=I+want+Group+Grabber+Tool" },
-                { hi: "✅ सही और एक्टिव नंबर छांटें (Number Filter)", en: "✅ Filter Active WhatsApp Numbers", btnHi: "फ़िल्टर लें", btnEn: "Get Filter", link: "https://Wa.me/917851848679?text=I+need+Number+Filter+Tool" },
-                { hi: "🛡️ नंबर ब्लॉक होने से बचाएं (Anti-Block)", en: "🛡️ Safe Marketing (Anti-Block)", btnHi: "सुरक्षित रहें", btnEn: "Stay Safe", link: "https://Wa.me/917851848679?text=Tell+me+about+Anti+Block+Feature" },
-                { hi: "📅 मैसेज को पहले से सेट करें (Scheduling)", en: "📅 Schedule your Campaigns", btnHi: "शेड्यूल करें", btnEn: "Schedule", link: "https://Wa.me/917851848679?text=I+want+Scheduling+Feature" },
-                { hi: "👆 बटन वाले मैसेज भेजें (Button Message)", en: "👆 Send Interactive Button Msgs", btnHi: "बटन भेजें", btnEn: "Send Buttons", link: "https://Wa.me/917851848679?text=I+want+Button+Message+Feature" },
-                { hi: "📸 फोटो/वीडियो के साथ मार्केटिंग (Media)", en: "📸 Send Photos & Videos", btnHi: "मीडिया भेजें", btnEn: "Send Media", link: "https://Wa.me/917851848679?text=I+want+Media+Marketing+Feature" },
-                { hi: "💼 ऑफिसियल API सेटअप (Business API)", en: "💼 Official Business API Setup", btnHi: "API लें", btnEn: "Get API", link: "https://Wa.me/917851848679?text=I+need+WhatsApp+Business+API" },
-                { hi: "✅ ग्रीन टिक वेरिफिकेशन पाएं (Green Tick)", en: "✅ Get Verified Green Tick", btnHi: "वेरीफाई करें", btnEn: "Verify Now", link: "https://Wa.me/917851848679?text=I+want+Green+Tick+Verification" },
-                { hi: "📈 अपने बिजनेस की लीड्स बढ़ाएं (Lead Gen)", en: "📈 Generate High Quality Leads", btnHi: "लीड्स पाएं", btnEn: "Get Leads", link: "https://Wa.me/917851848679?text=I+want+Lead+Generation+Tools" },
-                { hi: "🔗 अपने CRM को कनेक्ट करें (Integration)", en: "🔗 Connect your CRM easily", btnHi: "कनेक्ट करें", btnEn: "Connect", link: "https://Wa.me/917851848679?text=I+want+CRM+Integration" },
-                { hi: "🎧 एक नंबर, कई एजेंट (Multi-Agent)", en: "🎧 One Number, Multiple Agents", btnHi: "सपोर्ट दें", btnEn: "Get Support", link: "https://Wa.me/917851848679?text=I+want+Multi+Agent+Access" },
-                { hi: "🎯 पुराने ग्राहकों को फिर से मैसेज करें (Retargeting)", en: "🎯 Retarget Old Customers", btnHi: "टारगेट करें", btnEn: "Retarget", link: "https://Wa.me/917851848679?text=I+want+Retargeting+Strategy" },
-                { hi: "💡 एक्सपर्ट मार्केटिंग स्ट्रेटेजी (Expert Strategy)", en: "💡 Get Expert Marketing Strategy", btnHi: "प्लान जानें", btnEn: "Know Plan", link: "https://Wa.me/917851848679?text=I+need+Marketing+Strategy" }
+            // UPDATED: Added Hindi Translations
+            tickerAds: [
+                { icon: "fa-paper-plane", en: "Bulk WhatsApp Sender", hi: "बल्क व्हाट्सएप सेंडर" },
+                { icon: "fa-robot", en: "24/7 AI Chatbot Automation", hi: "24/7 AI चैटबॉट ऑटोमेशन" },
+                { icon: "fa-database", en: "Group Data Extractor", hi: "ग्रुप डेटा एक्सट्रैक्टर" },
+                { icon: "fa-filter", en: "Active Number Filter", hi: "सक्रिय नंबर फ़िल्टर" },
+                { icon: "fa-shield-halved", en: "Anti-Block Technology", hi: "एंटी-ब्लॉक तकनीक" },
+                { icon: "fa-calendar-check", en: "Smart Campaign Scheduling", hi: "स्मार्ट कैंपेन शेड्यूलिंग" },
+                { icon: "fa-hand-pointer", en: "Interactive Button Messages", hi: "इंटरैक्टिव बटन मैसेज" },
+                { icon: "fa-photo-video", en: "Multimedia Marketing Tools", hi: "मल्टीमीडिया मार्केटिंग टूल्स" },
+                { icon: "fa-code-branch", en: "Official WhatsApp API", hi: "आधिकारिक व्हाट्सएप एपीआई" },
+                { icon: "fa-check-circle", en: "Green Tick Verification Support", hi: "ग्रीन टिक वेरिफिकेशन सपोर्ट" },
+                { icon: "fa-bullseye", en: "Targeted Lead Generation", hi: "लक्षित लीड जनरेशन" },
+                { icon: "fa-users-cog", en: "CRM Integration Ready", hi: "CRM इंटीग्रेशन तैयार" },
+                { icon: "fa-headset", en: "Multi-Agent Support System", hi: "मल्टी-एजेंट सपोर्ट सिस्टम" },
+                { icon: "fa-sync-alt", en: "Advanced Retargeting", hi: "उन्नत रीटारगेटिंग" },
+                { icon: "fa-chess-knight", en: "Strategic Growth Marketing", hi: "रणनीतिक विकास मार्केटिंग" }
             ],
-
-            bottomAds: [
-                { hi: "अपना डिजिटल गोल्ड कार्ड बनवाए मात्र 49रु में", en: "make your digital gold card only 49 rupice", btnHi: "डेमो भेजो", btnEn: "see demo", link: "https://Wa.me/917851848679?text=Hello%2C%20please%20send%20me%20the%20demo%20of%20Digital%20Gold%20Card." },
-                { hi: "हमसे व्हाट्सएप पर जुड़ें", en: "Join us on WhatsApp", btnHi: "मैसेज व्हाट्सएप", btnEn: "chat me whatsapp", link: "https://Wa.me/917851848679?text=Hello%2C%20I%20visited%20your%20website%20and%20want%20to%20connect%20on%20WhatsApp." },
-                { hi: "अभी 20% डिस्काउंट में सॉफ्टवेयर दे रहे हैं।", en: "20% Discount Offer today sell", btnHi: "अधिक जाने", btnEn: "See more", link: "https://Wa.me/917851848679?text=Hello%2C%20I%20want%20to%20know%20more%20about%20the%2020%25%20Discount%20Offer%20on%20Software." },
-                { hi: "इस सॉफ्टवेयर में एक साथ हजारों मैसेज भेज सकते हैं।", en: "send thousend of messege in one click", btnHi: "मुझे मैसेज करे", btnEn: "chat me whatsapp", link: "https://Wa.me/917851848679?text=Hello%2C%20I%20am%20interested%20in%20the%20Bulk%20WhatsApp%20Sender%20Software.%20Please%20provide%20more%20details." },
-                { hi: "अपनी खुद की कस्टमाइज वेबसाइट बनवाए सस्ते में", en: "make your costmise websit chipest price", btnHi: "डेमो भेजो", btnEn: "see demo", link: "https://Wa.me/917851848679?text=Hello%2C%20I%20want%20to%20make%20a%20Customized%20Website.%20Please%20send%20demo%20and%20price." }
-            ],
-
             features: [
-                { id: 1, color: "card-emerald", icon: "fa-paper-plane", hi: "बल्क सेंडर", en: "Bulk Sender", line1Hi: "हजारों नंबरों पर एक साथ मैसेज भेजें।", line1En: "Send messages to thousands of numbers at once.", moreHi: "एक्सेल फ़ाइल सपोर्ट।\nपर्सनलाइज्ड मैसेजिंग।\nमल्टी-मीडिया अटैचमेंट।\nडिलीवरी रिपोर्ट के साथ।", moreEn: "Excel file support.\nPersonalized messaging.\nMulti-media attachments.\nWith delivery reports." },
-                { id: 2, color: "card-blue", icon: "fa-robot", hi: "AI चैटबॉट", en: "AI Chatbot", line1Hi: "24/7 ऑटो रिप्लाई सिस्टम सेट करें।", line1En: "Set up 24/7 auto-reply system.", moreHi: "कीवर्ड आधारित रिप्लाई।\nबटन मैसेज सपोर्ट।\nवेलकम मैसेज फीचर।\nस्मार्ट कन्वर्सेशन फ्लो।", moreEn: "Keyword based replies.\nButton message support.\nWelcome message feature.\nSmart conversation flow." },
-                { id: 3, color: "card-amber", icon: "fa-users", hi: "ग्रुप ग्रैबर", en: "Group Grabber", line1Hi: "ग्रुप मेंबर्स के नंबर तुरंत निकालें।", line1En: "Extract group member numbers instantly.", moreHi: "एक क्लिक में एक्सपोर्ट।\nअनलिमिटेड ग्रुप सपोर्ट।\nएक्सेल/CSV फॉर्मेट।\nसेफ और फ़ास्ट।", moreEn: "One-click export.\nUnlimited group support.\nExcel/CSV formats.\nSafe and fast." },
-                { id: 4, color: "card-purple", icon: "fa-filter", hi: "नंबर फिल्टर", en: "Number Filter", line1Hi: "नंबरों की एक्टिविटी चेक करें।", line1En: "Check number activity status.", moreHi: "व्हाट्सएप नंबर वैलिडेशन।\nहाई स्पीड स्कैनिंग।\nबल्क फिल्टरिंग।\nअपना समय बचाएं।", moreEn: "WhatsApp validation.\nHigh speed scanning.\nBulk filtering.\nSave your time." },
-                { id: 5, color: "card-rose", icon: "fa-shield-alt", hi: "एंटी-ब्लॉक", en: "Anti-Block", line1Hi: "नंबर ब्लॉक होने से बचाएं।", line1En: "Protect numbers from blocking.", moreHi: "स्मार्ट स्लीप मोड।\nमल्टी-अकाउंट रोटेशन।\nह्यूमन लाइक टाइपिंग।\nएडवांस डिले सेटिंग्स।", moreEn: "Smart sleep mode.\nMulti-account rotation.\nHuman-like typing.\nAdvance delay settings." },
-                { id: 6, color: "card-indigo", icon: "fa-calendar-alt", hi: "शेड्यूलिंग", en: "Scheduling", line1Hi: "मैसेज भेजने का समय तय करें।", line1En: "Schedule your sending time.", moreHi: "ऑटो सेंडिंग फीचर।\nमल्टीपल कैंपेन।\nएडिट और अपडेट।\nSET & FORGET।", moreEn: "Auto sending feature.\nMultiple campaigns.\nEdit and update.\nSet and forget." },
-                { id: 7, color: "card-cyan", icon: "fa-mouse-pointer", hi: "बटन मैसेज", en: "Button Message", line1Hi: "क्लिकेबल बटन वाले मैसेज भेजें।", line1En: "Send clickable button messages.", moreHi: "कॉल टू एक्शन बटन।\nवेबसाइट लिंक बटन।\nक्विक रिप्लाई बटन।\nहाई एंगेजमेंट रेट।", moreEn: "Call to action buttons.\nWebsite link buttons.\nQuick reply buttons.\nHigh engagement rate." },
-                { id: 8, color: "card-orange", icon: "fa-images", hi: "मीडिया मार्केटिंग", en: "Media Marketing", line1Hi: "फोटो और वीडियो कैंपेन चलाएं।", line1En: "Run photo and video campaigns.", moreHi: "HD क्वालिटी सपोर्ट।\nकैप्शन के साथ सेंडिंग।\nPDF और फाइल शेयरिंग।\nआसान मीडिया मैनेजमेंट।", moreEn: "HD quality support.\nSend with captions.\nPDF & file sharing.\nEasy media management." },
-                { id: 9, color: "card-emerald", icon: "fa-cogs", hi: "व्हाट्सएप बिजनेस API", en: "WhatsApp Business API", line1Hi: "ऑफिसियल API इंटीग्रेशन।", line1En: "Official API integration setup.", moreHi: "क्विक अप्रूवल।\nसिक्योर कनेक्शन।\nबिजनेस वेरिफिकेशन।\nआसान इंटीग्रेशन।", moreEn: "Quick approval.\nSecure connection.\nBusiness verification.\nEasy integration." },
-                { id: 10, color: "card-emerald", icon: "fa-check-circle", hi: "ग्रीन टिक वेरिफिकेशन", en: "Green Tick Verification", line1Hi: "वेरीफाइड बैज प्राप्त करें।", line1En: "Get verified badge.", moreHi: "ब्रांड क्रेडिबिलिटी।\nट्रस्ट बिल्डिंग।\nऑफिसियल सपोर्ट।\nज्यादा रीड रेट।", moreEn: "Brand credibility.\nTrust building.\nOfficial support.\nHigher read rates." },
-                { id: 11, color: "card-rose", icon: "fa-magnet", hi: "लीड जनरेशन", en: "Lead Generation", line1Hi: "क्वालिटी लीड्स जनरेट करें।", line1En: "Generate quality leads.", moreHi: "क्लिक-टू-व्हाट्सएप।\nऑटोमेटेड क्वालीफिकेशन।\nहाई कन्वर्शन।\nतुरंत जवाब।", moreEn: "Click-to-WhatsApp.\nAutomated qualification.\nHigh conversion.\nInstant response." },
-                { id: 12, color: "card-blue", icon: "fa-network-wired", hi: "CRM इंटीग्रेशन", en: "CRM Integration", line1Hi: "CRM के साथ कनेक्ट करें।", line1En: "Connect with CRM.", moreHi: "डाटा सिंक।\nऑटोमेटेड वर्कफ़्लो।\nसेंट्रलाइज्ड कम्युनिकेशन।\nरियल टाइम अपडेट।", moreEn: "Data sync.\nAutomated workflows.\nCentralized communication.\nReal-time updates." },
-                { id: 13, color: "card-purple", icon: "fa-headset", hi: "मल्टी-एजेंट सपोर्ट", en: "Multi-Agent Support", line1Hi: "कई यूजर एक नंबर पर।", line1En: "Multiple users one number.", moreHi: "शेयर्ड इनबॉक्स।\nरोल मैनेजमेंट।\nपरफॉरमेंस ट्रैकिंग।\nटीम सहयोग।", moreEn: "Shared inbox.\nRole management.\nPerformance tracking.\nTeam collaboration." },
-                { id: 14, color: "card-orange", icon: "fa-bullseye", hi: "री-टारगेटिंग", en: "Retargeting", line1Hi: "ग्राहकों को फिर से जोड़ें।", line1En: "Re-engage customers.", moreHi: "स्मार्ट सेगमेंटेशन।\nऑटो फॉलो-अप।\nपर्सनलाइज्ड ऑफर्स।\nROI बूस्टर।", moreEn: "Smart segmentation.\nAuto follow-ups.\nPersonalized offers.\nROI booster." },
-                { id: 15, color: "card-amber", icon: "fa-lightbulb", hi: "मार्केटिंग स्ट्रेटेजी", en: "Marketing Strategy", line1Hi: "कंटेंट और रणनीति।", line1En: "Content and strategy.", moreHi: "कंटेंट क्रिएशन।\nकैंपेन प्लानिंग।\nग्रोथ कंसल्टिंग।\nएक्सपर्ट सपोर्ट।", moreEn: "Content creation.\nCampaign planning.\nGrowth consulting.\nExpert support." }
+                { icon: "fa-paper-plane", en: "Bulk Sender", hi: "बल्क सेंडर", line1En: "Send thousands of msgs", line1Hi: "हजारों संदेश भेजें", moreEn: "Excel support\nPersonalized msgs\nMultimedia\nReports", moreHi: "एक्सेल सपोर्ट\nनिजीकृत संदेश\nमल्टीमीडिया\nरिपोर्ट्स" },
+                { icon: "fa-robot", en: "AI Chatbot", hi: "AI चैटबॉट", line1En: "24/7 Auto Reply", line1Hi: "24/7 ऑटो रिप्लाई", moreEn: "Keyword reply\nButton support\nWelcome msg\nSmart flow", moreHi: "कीवर्ड रिप्लाई\nबटन सपोर्ट\nवेलकम मैसेज\nस्मार्ट फ्लो" },
+                { icon: "fa-users", en: "Group Grabber", hi: "ग्रुप ग्रैबर", line1En: "Extract group data", line1Hi: "ग्रुप डेटा निकालें", moreEn: "One-click export\nUnlimited groups\nExcel/CSV\nFast & Safe", moreHi: "एक-क्लिक निर्यात\nअसीमित समूह\nएक्सेल/CSV\nतेज़ और सुरक्षित" },
+                { icon: "fa-filter", en: "Number Filter", hi: "नंबर फ़िल्टर", line1En: "Filter active numbers", line1Hi: "सक्रिय नंबर फ़िल्टर करें", moreEn: "WhatsApp check\nHigh speed\nBulk filter\nSave time", moreHi: "व्हाट्सएप चेक\nतेज़ गति\nबल्क फ़िल्टर\nसमय बचाएं" },
+                { icon: "fa-shield-alt", en: "Anti-Block", hi: "एंटी-ब्लॉक", line1En: "Safe marketing", line1Hi: "सुरक्षित मार्केटिंग", moreEn: "Smart sleep\nRotation\nHuman typing\nDelay settings", moreHi: "स्मार्ट स्लीप\nरोटेशन\nह्यूमन टाइपिंग\nदेरी सेटिंग्स" },
+                { icon: "fa-calendar-alt", en: "Scheduling", hi: "शेड्यूलिंग", line1En: "Schedule campaigns", line1Hi: "कैंपेन शेड्यूल करें", moreEn: "Auto send\nMultiple campaigns\nEdit/Update\nSet & Forget", moreHi: "ऑटो सेंड\nमल्टीपल कैंपेन\nएडिट/अपडेट\nसेट और भूल जाओ" },
+                { icon: "fa-mouse-pointer", en: "Button Message", hi: "बटन मैसेज", line1En: "Interactive buttons", line1Hi: "इंटरैक्टिव बटन", moreEn: "Call to Action\nLink buttons\nQuick reply\nHigh engagement", moreHi: "कॉल टू एक्शन\nलिंक बटन\nक्विक रिप्लाई\nउच्च जुड़ाव" },
+                { icon: "fa-images", en: "Media Marketing", hi: "मीडिया मार्केटिंग", line1En: "Send photos/videos", line1Hi: "फ़ोटो/वीडियो भेजें", moreEn: "HD Quality\nCaptions\nPDF/Files\nEasy manage", moreHi: "HD क्वालिटी\nकैप्शन\nPDF/फाइलें\nआसान प्रबंधन" },
+                { icon: "fa-cogs", en: "Business API", hi: "बिज़नेस API", line1En: "Official API Setup", line1Hi: "ऑफिशियल API सेटअप", moreEn: "Quick approval\nSecure\nVerification\nEasy integration", moreHi: "त्वरित अनुमोदन\nसुरक्षित\nवेरिफिकेशन\nआसान एकीकरण" },
+                { icon: "fa-check-circle", en: "Green Tick", hi: "ग्रीन टिक", line1En: "Get Verified Badge", line1Hi: "वेरिफाइड बैज प्राप्त करें", moreEn: "Credibility\nTrust\nOfficial\nHigh read rate", moreHi: "विश्वसनीयता\nभरोसा\nआधिकारिक\nउच्च रीड रेट" },
+                { icon: "fa-magnet", en: "Lead Gen", hi: "लीड जनरेशन", line1En: "Generate Leads", line1Hi: "लीड्स जेनरेट करें", moreEn: "Click-to-WA\nAuto qualify\nHigh conversion\nInstant reply", moreHi: "क्लिक-टू-WA\nऑटो क्वालिफाई\nउच्च रूपांतरण\nत्वरित उत्तर" },
+                { icon: "fa-network-wired", en: "CRM Integration", hi: "CRM इंटीग्रेशन", line1En: "Connect CRM", line1Hi: "CRM कनेक्ट करें", moreEn: "Data sync\nWorkflows\nCentralized\nReal-time", moreHi: "डेटा सिंक\nवर्कफ़्लो\nकेंद्रीकृत\nरियल-टाइम" },
+                { icon: "fa-headset", en: "Multi-Agent", hi: "मल्टी-एजेंट", line1En: "Multiple Users", line1Hi: "मल्टीपल यूजर्स", moreEn: "Shared inbox\nRoles\nTracking\nCollaboration", moreHi: "शेयर्ड इनबॉक्स\nरोल्स\nट्रैकिंग\nसहयोग" },
+                { icon: "fa-bullseye", en: "Retargeting", hi: "रीटारगेटिंग", line1En: "Re-engage users", line1Hi: "यूजर्स को फिर से जोड़ें", moreEn: "Segmentation\nFollow-ups\nOffers\nROI boost", moreHi: "सेगमेंटेशन\nफॉलो-अप\nऑफ़र\nROI बूस्ट" },
+                { icon: "fa-lightbulb", en: "Strategy", hi: "रणनीति", line1En: "Marketing Strategy", line1Hi: "मार्केटिंग रणनीति", moreEn: "Content\nPlanning\nConsulting\nExpert support", moreHi: "कंटेंट\nप्लानिंग\nकंसल्टिंग\nएक्सपर्ट सपोर्ट" }
             ],
-
             plansData: [
-                { 
-                    id: "starter", 
-                    hi: "बेसिक प्लान", 
-                    en: "Starter Plan", 
-                    price: "999", 
-                    durationHi: "/ महीना", 
-                    durationEn: "/ month", 
-                    // Removed '✅ ' from strings
-                    featuresHi: ["अनलिमिटेड मैसेज", "AI चैटबॉट", "बटन मैसेज", "शेड्यूल मैसेजिंग", "हाई स्पीड सेंडिंग", "एंटी-ब्लॉक सेफ", "प्रायोरिटी सपोर्ट", "सभी अपडेट्स फ्री"],
-                    featuresEn: ["Unlimited Msgs", "AI Chatbot", "Button Msgs", "Schedule Msgs", "High Speed", "Anti-Block Safe", "Priority Support", "Free Updates"]
-                },
-                { 
-                    id: "pro", 
-                    hi: "प्रोफेशनल", 
-                    en: "Professional", 
-                    price: "1,999", 
-                    durationHi: "/ साल", 
-                    durationEn: "/ year", 
-                    // Removed '✅ ' from strings
-                    featuresHi: ["अनलिमिटेड मैसेज", "AI चैटबॉट", "बटन मैसेज", "शेड्यूल मैसेजिंग", "हाई स्पीड सेंडिंग", "एंटी-ब्लॉक सेफ", "प्रायोरिटी सपोर्ट", "सभी अपडेट्स फ्री"],
-                    featuresEn: ["Unlimited Msgs", "AI Chatbot", "Button Msgs", "Schedule Msgs", "High Speed", "Anti-Block Safe", "Priority Support", "Free Updates"]
-                },
-                { 
-                    id: "lifetime", 
-                    hi: "लाइफटाइम", 
-                    en: "Lifetime", 
-                    price: "4,999", 
-                    durationHi: "/ वन टाइम", 
-                    durationEn: "/ one time", 
-                    // Removed '✅ ' from strings
-                    featuresHi: ["अनलिमिटेड मैसेज", "AI चैटबॉट", "बटन मैसेज", "शेड्यूल मैसेजिंग", "हाई स्पीड सेंडिंग", "एंटी-ब्लॉक सेफ", "प्रायोरिटी सपोर्ट", "सभी अपडेट्स फ्री"],
-                    featuresEn: ["Unlimited Msgs", "AI Chatbot", "Button Msgs", "Schedule Msgs", "High Speed", "Anti-Block Safe", "Priority Support", "Free Updates"]
-                }
+                { id: "starter", en: "Monthly", hi: "मासिक", price: "999", durationEn: "/ month", durationHi: "/ महीना", featuresEn: ["Unlimited Msgs", "AI Chatbot", "Button Msgs", "Schedule Msgs", "High Speed", "Anti-Block Safe", "Priority Support", "Free Updates"], featuresHi: ["अनलिमिटेड मैसेज", "AI चैटबॉट", "बटन मैसेज", "शेड्यूल मैसेज", "तेज़ गति", "एंटी-ब्लॉक सेफ", "प्रायोरिटी सपोर्ट", "फ्री अपडेट्स"] },
+                { id: "pro", en: "Yearly", hi: "वार्षिक", price: "1,999", durationEn: "/ year", durationHi: "/ साल", featuresEn: ["Unlimited Msgs", "AI Chatbot", "Button Msgs", "Schedule Msgs", "High Speed", "Anti-Block Safe", "Priority Support", "Free Updates"], featuresHi: ["अनलिमिटेड मैसेज", "AI चैटबॉट", "बटन मैसेज", "शेड्यूल मैसेज", "तेज़ गति", "एंटी-ब्लॉक सेफ", "प्रायोरिटी सपोर्ट", "फ्री अपडेट्स"] },
+                { id: "lifetime", en: "Lifetime", hi: "लाइफटाइम", price: "4,999", durationEn: "/ one time", durationHi: "/ एक बार", featuresEn: ["Unlimited Msgs", "AI Chatbot", "Button Msgs", "Schedule Msgs", "High Speed", "Anti-Block Safe", "Priority Support", "Free Updates"], featuresHi: ["अनलिमिटेड मैसेज", "AI चैटबॉट", "बटन मैसेज", "शेड्यूल मैसेज", "तेज़ गति", "एंटी-ब्लॉक सेफ", "प्रायोरिटी सपोर्ट", "फ्री अपडेट्स"] }
             ],
-
             otherServices: [
-                { color: "card-amber", hi: "अपनी खुद की कस्टमाइज वेबसाइट बनवाए", en: "make your landing costam disain", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwmf67pIKUeBla3bXuAkji13aJysHVo7Fj5v7MfTs9-wHmtyCSyh-rIT1NnAALlD_Kf0PVfrD5Y0HsJ4ws4MBGX28h_fR1N1f6w5fK0D8_c-JMThB1dswlJXaYP9l_aF0RgXTLlKYaKtLF1haRCSp2Y8DIEOSmUCbs0JpHRAFJ-NYziZspJZK0IspHsFs/s1105/IMG_20260109_232134.jpg", link: "https://Wa.me/917851848679?text=Hello%2C%20I%20am%20interested%20in%20Custom%20Website%20Design.%20Please%20share%20details." },
-                { color: "card-purple", hi: "एक करोड़ वेरीफाइड एरिया और सर्विस वाइस डाटा प्राप्त करें और बिजनेस only 199", en: "1 caror area and sarvise vise data only 199", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHceQgEnwmQvo8t7hizZr5z5_1tnVKbcPmfTdPtUU629rk_NAQIrnUJeXiZKLmkteV0Kx8a7yECHtdwSTny4mIuERNpZsfK5udPrpCtwwCOpkXN9c8CQGIHzmsOwMNvP6zkD2Xl7-FBAnibUKRs0wJcNq6yrdlzG5QJxjKVMiUN82MjP9W9_cABQKUtJM/s1536/IMG-20260113-WA0030.jpg", link: "https://Wa.me/917851848679?text=Hello%2C%20I%20am%20interested%20in%201%20Crore%20Data%20Bundle.%20Please%20share%20details." }
+                { color: "card-amber", en: "Custom Website Design", hi: "कस्टम वेबसाइट डिज़ाइन", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwmf67pIKUeBla3bXuAkji13aJysHVo7Fj5v7MfTs9-wHmtyCSyh-rIT1NnAALlD_Kf0PVfrD5Y0HsJ4ws4MBGX28h_fR1N1f6w5fK0D8_c-JMThB1dswlJXaYP9l_aF0RgXTLlKYaKtLF1haRCSp2Y8DIEOSmUCbs0JpHRAFJ-NYziZspJZK0IspHsFs/s1105/IMG_20260109_232134.jpg", link: "Custom Website Design" },
+                { color: "card-purple", en: "1 Crore Verified Leads", hi: "1 करोड़ वेरिफाइड लीड्स", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHceQgEnwmQvo8t7hizZr5z5_1tnVKbcPmfTdPtUU629rk_NAQIrnUJeXiZKLmkteV0Kx8a7yECHtdwSTny4mIuERNpZsfK5udPrpCtwwCOpkXN9c8CQGIHzmsOwMNvP6zkD2Xl7-FBAnibUKRs0wJcNq6yrdlzG5QJxjKVMiUN82MjP9W9_cABQKUtJM/s1536/IMG-20260113-WA0030.jpg", link: "B2B Data Bundle" }
+            ],
+            bottomAds: [
+                { en: "Single Page Business Website @ ₹999", hi: "सिंगल पेज बिज़नेस वेबसाइट @ ₹999", link: "Website Offer" },
+                { en: "Connect with us on WhatsApp", hi: "हमसे व्हाट्सएप पर जुड़ें", link: "WA Chat" },
+                { en: "Grab 20% Discount on Software", hi: "सॉफ्टवेयर पर 20% छूट प्राप्त करें", link: "Discount" }
             ]
-        };
-
-        const LANGUAGES = {
-            en: 'English', hi: 'हिंदी', gu: 'ગુજરાતી', kn: 'ಕನ್ನಡ', mr: 'मराठी', ta: 'தமிழ்', ur: 'اردو'
         };
 
         let currentLang = 'en';
 
         function getWALink(type, item, price) {
-            let msg = "";
-            item = item || "";
-            price = price || "";
-
-            switch(type) {
-                case 'Navbar':
-                    msg = "Hello, I visited your website and I want to join your WhatsApp Group. Please add me.";
-                    break;
-                case 'Feature': 
-                    msg = `Hello, I saw the *${item}* feature on your website. I want to order/know more about it.`;
-                    break;
-                case 'Plan': 
-                    msg = `Hello, I want to buy the *${item}* plan (Price: ₹${price}). Please share the payment details.`;
-                    break;
-                case 'VideoSectionDivider':
-                    msg = "Hello, I watched the software demo video. I am interested in buying the WhatsApp Marketing Software.";
-                    break;
-                case 'MoreSolutionsDivider': 
-                    msg = "Hello, I checked your other services. Please provide more information about them.";
-                    break;
-                case 'ArticleModalCTA': 
-                    msg = "Hello, I read the details about the WhatsApp Marketing Software. I want to buy the license.";
-                    break;
-                case 'Floating': 
-                    msg = "Hello, I visited your website. I have an inquiry regarding the software.";
-                    break;
-                // NEW CASE FOR SPECIAL OFFER
-                case 'SpecialOfferWebsite':
-                    msg = "Hello, I am interested in the Special Offer: Single Page Website for ₹999. Please share details.";
-                    break;
-                default:
-                    msg = `Hello, I am interested in: ${type} ${item}`; 
-            }
+            let msg = `Hello Mathaniya Technologies, I am interested in ${type}: ${item || ''}`;
+            if(price) msg += ` (Price: ₹${price})`;
             return `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
         }
 
-        // Modal Functions
-        function openModal(type) {
-            const modalBody = document.getElementById('modalBody');
-            let content = '';
-
-            if (type === 'privacy') {
-                content = `
-                    <h2 class="text-3xl font-black text-slate-800 mb-4">Privacy Policy (WhatsApp Business API)</h2>
-                    <div class="article-body">
-                        <p>हम आपकी गोपनीयता को गंभीरता से लेते हैं। यह नीति बताती है कि हम WhatsApp Business API का उपयोग करते समय आपके डेटा को कैसे संभालते हैं।</p>
-                        <h3>1. डेटा सुरक्षा</h3>
-                        <p>हम आपके डेटा को एन्क्रिप्टेड सर्वर पर सुरक्षित रखते हैं। हम आपके डेटा को किसी तीसरे पक्ष के साथ साझा नहीं करते हैं।</p>
-                        <h3>2. WhatsApp अनुपालन</h3>
-                        <p>हम WhatsApp की सभी नीतियों और शर्तों का कड़ाई से पालन करते हैं ताकि आपका खाता सुरक्षित रहे और बैन न हो।</p>
-                        <h3>3. उपयोगकर्ता जानकारी</h3>
-                        <p>हम केवल वही जानकारी एकत्र करते हैं जो सेवा प्रदान करने के लिए आवश्यक है, जैसे आपका नाम और फोन नंबर।</p>
-                    </div>
-                `;
-            } else if (type === 'refund') {
-                content = `
-                    <h2 class="text-3xl font-black text-slate-800 mb-4">Refund Policy</h2>
-                    <div class="article-body">
-                        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
-                            <p class="font-bold text-red-700">Non-Refundable Policy</p>
-                            <p class="text-red-600">Please note that our software licenses are non-refundable once activated.</p>
-                        </div>
-                        <p>हम आपको सॉफ्टवेयर सौंपने से पहले पूरी तरह से <strong>इंटीग्रेशन और सेटअप (Integration & Setup)</strong> करके देते हैं।</p>
-                        <p>हम सुनिश्चित करते हैं कि सॉफ्टवेयर आपके सिस्टम पर सही ढंग से काम कर रहा है। एक बार लाइसेंस जारी होने के बाद, डिजिटल उत्पाद की प्रकृति के कारण रिफंड संभव नहीं है।</p>
-                        <p>यदि आपको कोई समस्या आती है, तो हमारी सपोर्ट टीम उसे ठीक करने के लिए पूरी तरह प्रतिबद्ध है।</p>
-                    </div>
-                `;
-            } else if (type === 'terms') {
-                content = `
-                    <h2 class="text-3xl font-black text-slate-800 mb-4">Terms & Conditions</h2>
-                    <div class="article-body">
-                        <p>हमारी सेवाओं का उपयोग करके, आप निम्नलिखित नियमों और शर्तों से सहमत होते हैं:</p>
-                        <ul>
-                            <li>सॉफ्टवेयर का उपयोग केवल कानूनी उद्देश्यों के लिए किया जाना चाहिए।</li>
-                            <li>स्पैमिंग या अनचाहे संदेश भेजने के लिए सॉफ्टवेयर का उपयोग करना प्रतिबंधित है।</li>
-                            <li>लाइसेंस एक समय में एक ही डिवाइस/उपयोगकर्ता के लिए मान्य है (जब तक कि मल्टी-यूजर प्लान न हो)।</li>
-                            <li>हम बिना पूर्व सूचना के शर्तों को अपडेट करने का अधिकार सुरक्षित रखते हैं।</li>
-                        </ul>
-                    </div>
-                `;
-            } else if (type === 'support') {
-                content = `
-                    <h2 class="text-3xl font-black text-slate-800 mb-4">Customer Support</h2>
-                    <div class="article-body">
-                        <p>हम अपने ग्राहकों को सर्वोत्तम सेवा प्रदान करने में विश्वास करते हैं।</p>
-                        <h3>हमारी प्रतिबद्धता:</h3>
-                        <ul>
-                            <li><strong>24/7 सहायता:</strong> हमारी टीम आपकी समस्याओं को हल करने के लिए हमेशा तत्पर है।</li>
-                            <li><strong>तकनीकी सहायता:</strong> सेटअप, इंस्टॉलेशन और एकीकरण में पूर्ण सहायता।</li>
-                            <li><strong>अपडेट्स:</strong> हम नियमित रूप से सॉफ्टवेयर अपडेट प्रदान करते हैं ताकि आप नवीनतम सुविधाओं का लाभ उठा सकें।</li>
-                        </ul>
-                        <p class="font-bold mt-4">संपर्क करें: +91 7851848679</p>
-                    </div>
-                `;
-            } else {
-                // Default 'More Info' Article
-                content = `
-                    <div class="text-center mb-8 border-b pb-6">
-                        <span class="bg-yellow-100 text-yellow-800 text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest mb-2 inline-block">Best Seller Tool</span>
-                        <h2 class="text-3xl md:text-4xl font-black text-slate-800 font-['Outfit'] mb-2">WhatsApp Marketing Software</h2>
-                        <p class="text-emerald-600 font-bold text-xl">अपने बिज़नेस को 10 गुना बढ़ाने का सबसे आसान तरीका!</p>
-                    </div>
-
-                    <div class="article-body">
-                        <p>क्या आप अपने ग्राहकों तक पहुँचने के लिए संघर्ष कर रहे हैं? क्या आप एक-एक करके मैसेज भेजकर अपना कीमती समय बर्बाद कर रहे हैं? अगर हाँ, तो हमारे पास आपके लिए एक ऐसा समाधान है जो आपके बिज़नेस करने के तरीके को हमेशा के लिए बदल देगा।</p>
-
-                        <h3>🔥 बिज़नेस में क्रांति: WhatsApp Marketing क्यों ज़रूरी है?</h3>
-                        <p>आज के दौर में हर किसी के हाथ में मोबाइल है और हर मोबाइल में WhatsApp है। ईमेल को लोग इग्नोर कर देते हैं, SMS को कोई पढ़ता नहीं, लेकिन <strong>WhatsApp मैसेज का ओपन रेट 98% है!</strong> इसका मतलब है कि आपका मैसेज आपके ग्राहक तक ज़रूर पहुँचेगा। हमारा सॉफ्टवेयर इसी शक्ति का उपयोग करके आपके बिज़नेस को आसमान की ऊँचाइयों तक ले जाता है।</p>
-
-                        <div class="highlight-box">
-                            <p class="font-bold text-lg text-emerald-800 mb-0">💡 विशेष ऑफर: 1 साल का लाइसेंस सिर्फ ₹1999 में! (बाज़ार में कीमत ₹5000+ है)</p>
-                        </div>
-
-                        <h3>🚀 यह सॉफ्टवेयर आपके बिज़नेस को कैसे 10 गुना बढ़ाएगा?</h3>
-                        <ul>
-                            <li><strong>समय की भारी बचत:</strong> जो काम करने में आपको घंटों लगते थे, वो अब मिनटों में होगा। एक क्लिक में हजारों ग्राहकों को अपने नए ऑफर्स, डिस्काउंट या प्रोडक्ट की जानकारी भेजें।</li>
-                            <li><strong>सेल्स में 300% की वृद्धि:</strong> जब आप सीधे ग्राहक के पर्सनल इनबॉक्स में पहुँचते हैं, तो कन्वर्शन रेट बढ़ जाता है। हमारे क्लाइंट्स ने सॉफ्टवेयर यूज़ करने के पहले महीने में ही अपनी सेल्स में भारी उछाल देखा है।</li>
-                            <li><strong>कस्टमर एंगेजमेंट:</strong> हमारा AI चैटबॉट 24/7 आपके ग्राहकों से बात करता है। आप सो रहे हों या छुट्टी पर हों, आपका बिज़नेस कभी नहीं रुकता।</li>
-                            <li><strong>पैसे की बचत:</strong> पारंपरिक विज्ञापन (फेसबुक एड्स, गूगल एड्स) बहुत महंगे हैं। हमारा सॉफ्टवेयर आपको साल भर के लिए सिर्फ ₹1999 में अनलिमिटेड मार्केटिंग करने की आज़ादी देता है। यानी <strong>रोज़ाना ₹6 से भी कम का खर्चा!</strong></li>
-                        </ul>
-
-                        <h3>💎 सॉफ्टवेयर के पावरफुल फीचर्स (Features)</h3>
-                        <p>हम आपको सिर्फ एक टूल नहीं, बल्कि एक पूरा मार्केटिंग सिस्टम दे रहे हैं:</p>
-                        <ul>
-                            <li><strong>बल्क सेंडर (Bulk Sender):</strong> एक्सेल शीट अपलोड करें और हजारों मैसेज भेजें।</li>
-                            <li><strong>बटन मैसेज (Interactive Buttons):</strong> साधारण टेक्स्ट नहीं, बल्कि 'Call Now', 'Visit Website' जैसे बटन वाले मैसेज भेजें जो देखने में प्रोफेशनल लगते हैं।</li>
-                            <li><strong>नंबर फ़िल्टर (Number Filter):</strong> जानें कि कौन सा नंबर WhatsApp पर एक्टिव है और कौन सा नहीं, ताकि आपका समय बर्बाद न हो।</li>
-                            <li><strong>ग्रुप ग्रैबर (Group Grabber):</strong> किसी भी WhatsApp ग्रुप के सभी सदस्यों के नंबर एक क्लिक में निकालें और उन्हें अपना कस्टमर बनाएं।</li>
-                            <li><strong>एंटी-ब्लॉक टेक्नोलॉजी:</strong> हमारा स्मार्ट सिस्टम मानव व्यवहार की नक़ल करता है ताकि आपका नंबर सुरक्षित रहे।</li>
-                        </ul>
-
-                        <h3>💰 क्या ₹1999 में यह डील अच्छी है?</h3>
-                        <p>सोचिए, अगर यह सॉफ्टवेयर आपको साल भर में सिर्फ 10 नए बड़े ग्राहक भी लाकर दे (जो कि यह आसानी से एक दिन में कर सकता है), तो क्या ₹1999 की निवेश वसूली नहीं हो गई? यह कोई खर्चा नहीं, बल्कि आपके बिज़नेस के लिए सबसे समझदारी भरा निवेश है।</p>
-                        <p>बाज़ार में कई अन्य टूल्स हैं जो या तो बहुत महंगे हैं या ठीक से काम नहीं करते। हम आपको देते हैं <strong>100% वर्किंग सॉल्यूशन, फ्री अपडेट्स और बेहतरीन कस्टमर सपोर्ट।</strong></p>
-
-                        <div class="bg-gradient-to-r from-emerald-500 to-teal-600 p-6 rounded-xl text-white text-center mt-8">
-                            <h4 class="text-2xl font-black mb-2">अभी आर्डर करें!</h4>
-                            <p class="mb-4 text-emerald-100">ऑफर सीमित समय के लिए है। अपने बिज़नेस को आज ही वो रफ़्तार दें जिसका वो हक़दार है।</p>
-                            <a href="javascript:location.href=getWALink('ArticleModalCTA')" class="inline-block bg-white text-emerald-700 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:scale-105 transition-transform">
-                                व्हाट्सएप पर खरीदें (Buy Now)
-                            </a>
-                        </div>
-                    </div>
-                `;
-            }
-
-            modalBody.innerHTML = content;
-            document.getElementById('moreInfoModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById('moreInfoModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function toggleLangMenu() {
-            const menu = document.getElementById('langMenu');
+        function toggleNavMenu() {
+            const menu = document.getElementById('navMenu');
+            const btn = document.getElementById('menuToggleBtn');
             menu.classList.toggle('show');
+            btn.classList.toggle('active');
         }
 
-        document.addEventListener('click', function(event) {
-            const menu = document.getElementById('langMenu');
-            const btn = document.getElementById('langBtn');
-            if (menu && btn && !menu.contains(event.target) && !btn.contains(event.target)) {
-                menu.classList.remove('show');
+        window.onclick = function(event) {
+            if (!event.target.closest('.relative')) {
+                const menu = document.getElementById('navMenu');
+                const btn = document.getElementById('menuToggleBtn');
+                if (menu && menu.classList.contains('show')) {
+                    menu.classList.remove('show');
+                    btn.classList.remove('active');
+                }
             }
-        });
+        }
 
-        function setLang(lang) {
-            currentLang = lang;
-            const label = document.getElementById('currentLangLabel');
-            if(label) label.innerText = LANGUAGES[lang];
-            const menu = document.getElementById('langMenu');
-            if(menu) menu.classList.remove('show');
+        function toggleLanguage() {
+            const container = document.getElementById('langSwitcher');
+            currentLang = (currentLang === 'en') ? 'hi' : 'en';
+            
+            if (currentLang === 'hi') {
+                container.classList.add('is-hi');
+                document.getElementById('labelHi').className = 'lang-label active';
+                document.getElementById('labelEn').className = 'lang-label inactive';
+            } else {
+                container.classList.remove('is-hi');
+                document.getElementById('labelEn').className = 'lang-label active';
+                document.getElementById('labelHi').className = 'lang-label inactive';
+            }
             renderUI();
         }
 
-        function updateSiteIdentity() {
-            document.title = `${SITE_CONFIG.siteNamePrefix}${SITE_CONFIG.siteNameSuffix}`;
-            const np = document.getElementById('navPrefix'); if(np) np.innerText = SITE_CONFIG.siteNamePrefix;
-            const ns = document.getElementById('navSuffix'); if(ns) ns.innerText = SITE_CONFIG.siteNameSuffix;
-            const fp = document.getElementById('footPrefix'); if(fp) fp.innerText = SITE_CONFIG.siteNamePrefix;
-            const fs = document.getElementById('footSuffix'); if(fs) fs.innerText = SITE_CONFIG.siteNameSuffix;
+        function openModal(type) {
+            const modal = document.getElementById('infoModal');
+            const body = document.getElementById('modalBody');
+            
+            if(type === 'founder') {
+                 const existingFounderContent = document.getElementById('founderModalContent');
+                 if(existingFounderContent) {
+                     existingFounderContent.classList.remove('hidden');
+                     modal.style.display = 'flex';
+                     document.body.style.overflow = 'hidden';
+                 }
+            } else if(type === 'privacy') {
+                 body.innerHTML = `<div class="p-8"><h2 class="text-2xl font-bold mb-4">Privacy Policy</h2><p class="text-slate-600">We prioritize your data security. Mathaniya Technologies ensures that user information is encrypted and never shared with unauthorized third parties.</p><button onclick="closeModal()" class="mt-4 bg-slate-800 text-white px-4 py-2 rounded">Close</button></div>`;
+                 modal.style.display = 'flex';
+                 document.body.style.overflow = 'hidden';
+            } else if(type === 'terms') {
+                 body.innerHTML = `<div class="p-8"><h2 class="text-2xl font-bold mb-4">Terms & Conditions</h2><p class="text-slate-600">Standard usage policies apply. Our software must be used for legal marketing purposes only. Licenses are valid for single user/device unless mentioned.</p><button onclick="closeModal()" class="mt-4 bg-slate-800 text-white px-4 py-2 rounded">Close</button></div>`;
+                 modal.style.display = 'flex';
+                 document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+            const fc = document.getElementById('founderModalContent');
+            if(fc) fc.classList.add('hidden');
+            document.body.style.overflow = 'auto';
         }
 
         function renderUI() {
-            updateSiteIdentity();
-            document.querySelectorAll('[data-hi]').forEach(el => {
-                const text = currentLang === 'hi' ? el.getAttribute('data-hi') : el.getAttribute('data-en');
-                el.innerText = text;
+            // Update static elements with data attributes
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.innerText = currentLang === 'hi' ? (el.getAttribute('data-hi') || el.getAttribute('data-en')) : el.getAttribute('data-en');
             });
-            
-            // Features Grid
+
+            // UPDATED: Ticker Rendering with Dynamic Language Support
+            const tickerHtml = SITE_CONFIG.tickerAds.map(item => `
+                <span class="inline-flex items-center mx-6 text-sm md:text-lg font-black font-['Outfit'] tracking-wider text-slate-800 uppercase hover:text-emerald-600 transition-colors cursor-default" style="text-shadow: 1px 1px 0px rgba(0,0,0,0.05);">
+                    <i class="fas ${item.icon} text-emerald-500 mr-2 text-xl drop-shadow-sm"></i> ${currentLang === 'hi' ? item.hi : item.en}
+                </span>`
+            ).join('');
+            document.getElementById('tickerContent').innerHTML = tickerHtml + tickerHtml;
+
+            // UPDATED: Feature Grid with Dynamic Language Support
             const fGrid = document.getElementById('featureGrid');
-            if(fGrid) {
-                fGrid.innerHTML = '';
-                SITE_CONFIG.features.forEach((f, index) => {
-                    const langKey = currentLang === 'hi' ? 'hi' : 'en'; 
-                    const line1Key = currentLang === 'hi' ? 'line1Hi' : 'line1En';
-                    const moreKey = currentLang === 'hi' ? 'moreHi' : 'moreEn';
-                    
-                    // Split features into two arrays for Left and Right columns
-                    const allFeatures = (f[moreKey] || f['moreEn']).split('\n');
-                    const half = Math.ceil(allFeatures.length / 2);
-                    const leftFeatures = allFeatures.slice(0, half);
-                    const rightFeatures = allFeatures.slice(half);
-                    
-                    fGrid.innerHTML += `
-                        <div class="group relative w-full transform transition-all duration-300 hover:-translate-y-1">
-                            <!-- Glow Background -->
-                            <div class="absolute -inset-0.5 bg-gradient-to-r from-[#25D366] to-[#075E54] rounded-2xl opacity-50 group-hover:opacity-100 blur transition duration-300"></div>
-                            
-                            <!-- Main Card Container -->
-                            <div class="relative bg-[#075E54] rounded-xl md:rounded-2xl p-2 md:p-6 flex flex-row items-center gap-2 md:gap-8 border border-emerald-600/50">
-                                
-                                <!-- Icon (Left Side) -->
-                                <div class="h-14 w-14 md:h-24 md:w-24 rounded-lg md:rounded-2xl bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center text-xl md:text-4xl text-white shadow-lg shrink-0 border-2 md:border-4 border-[#075E54] group-hover:scale-110 transition-transform duration-300">
-                                    <i class="fas ${f.icon}"></i>
-                                </div>
-                                
-                                <!-- Content Area (Middle) -->
-                                <div class="flex-1 text-left min-w-0 flex flex-col gap-2">
-                                    <!-- Title Row: Title -> Subtitle -->
-                                    <div class="flex items-center text-white">
-                                        <h3 class="text-xs md:text-3xl font-black font-['Outfit'] tracking-wide uppercase truncate pr-1">${f[langKey] || f['en']}</h3>
-                                        <i class="fas fa-long-arrow-alt-right text-[#25D366] mx-1 md:mx-2 text-xs md:text-xl"></i>
-                                        <span class="text-emerald-100 text-[9px] md:text-lg font-bold truncate">${f[line1Key] || f['line1En']}</span>
-                                    </div>
-                                    
-                                    <!-- Details + Button Row -->
-                                    <div class="flex flex-row gap-2 w-full items-stretch">
-                                        
-                                        <!-- Left Points Box -->
-                                        <div class="flex-1 bg-black/20 rounded-lg p-1.5 md:p-3 border-l-2 md:border-l-4 border-[#25D366]">
-                                            <div class="flex flex-col gap-0.5 md:gap-1 text-emerald-50 text-[8px] md:text-sm leading-tight">
-                                                ${leftFeatures.map(item => `
-                                                    <div class="flex items-start">
-                                                        <!-- Changed Icon to Star -->
-                                                        <i class="fas fa-star text-[#25D366] mr-1 text-[8px] md:text-xs mt-0.5 shrink-0"></i>
-                                                        <span class="truncate">${item}</span>
-                                                    </div>
-                                                `).join('')}
-                                            </div>
-                                        </div>
-
-                                        <!-- Right Points Box -->
-                                        <div class="flex-1 bg-black/20 rounded-lg p-1.5 md:p-3 border-l-2 md:border-l-4 border-[#25D366]">
-                                            <div class="flex flex-col gap-0.5 md:gap-1 text-emerald-50 text-[8px] md:text-sm leading-tight">
-                                                ${rightFeatures.map(item => `
-                                                    <div class="flex items-start">
-                                                        <!-- Changed Icon to Star -->
-                                                        <i class="fas fa-star text-[#25D366] mr-1 text-[8px] md:text-xs mt-0.5 shrink-0"></i>
-                                                        <span class="truncate">${item}</span>
-                                                    </div>
-                                                `).join('')}
-                                            </div>
-                                        </div>
-
-                                        <!-- Order Button (Aligned Right with Details) -->
-                                        <div class="shrink-0 flex flex-col justify-center">
-                                            <a href="javascript:location.href=getWALink('Feature', '${f[langKey] || f['en']}')" class="block bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#075E54] px-2 py-2 md:px-6 md:py-3 rounded-lg md:rounded-xl font-black uppercase text-[8px] md:text-sm tracking-wider shadow-lg transition-all duration-300 text-center whitespace-nowrap flex flex-col items-center justify-center h-full">
-                                                <div class="flex flex-col leading-none">
-                                                    <span>${currentLang === 'hi' ? 'ऑर्डर' : 'Order'}</span>
-                                                    <span class="text-[6px] md:text-[9px] opacity-80 mt-0.5">${currentLang === 'hi' ? 'करें' : 'Now'}</span>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                    </div>
-                                </div>
+            fGrid.innerHTML = SITE_CONFIG.features.map(f => {
+                const points = (currentLang === 'hi' ? f.moreHi : f.moreEn).split('\n');
+                return `<div class="group relative transform hover:-translate-y-1 transition-all duration-300">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-[#25D366] to-[#075E54] rounded-2xl opacity-50 blur"></div>
+                    <div class="relative bg-[#075E54] rounded-2xl p-3 md:p-5 flex flex-row items-center gap-4 border border-emerald-600/50">
+                        <div class="h-12 w-12 md:h-16 md:w-16 rounded-xl bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center text-xl md:text-2xl text-white shadow-lg shrink-0 border-2 border-[#075E54]"><i class="fas ${f.icon}"></i></div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center text-white mb-2"><h3 class="text-sm md:text-2xl font-black font-['Outfit'] uppercase truncate">${currentLang === 'hi' ? f.hi : f.en}</h3><i class="fas fa-long-arrow-alt-right mx-2 text-[#25D366] text-xs"></i><span class="text-emerald-100 text-[10px] md:text-sm font-bold truncate">${currentLang === 'hi' ? f.line1Hi : f.line1En}</span></div>
+                            <div class="flex gap-2 w-full">
+                                <div class="flex-1 bg-black/20 rounded p-1.5 border-l-2 border-[#25D366] text-[9px] md:text-xs text-emerald-50">${points.slice(0,2).map(p=>`<div><i class="fas fa-star text-[#25D366] mr-1"></i>${p}</div>`).join('')}</div>
+                                <div class="flex-1 bg-black/20 rounded p-1.5 border-l-2 border-[#25D366] text-[9px] md:text-xs text-emerald-50">${points.slice(2,4).map(p=>`<div><i class="fas fa-star text-[#25D366] mr-1"></i>${p}</div>`).join('')}</div>
+                                <a href="${getWALink('Feature', f.en)}" class="shrink-0 flex items-center justify-center border-2 border-white text-white px-2 md:px-4 rounded-lg font-black text-[9px] md:text-xs uppercase hover:bg-white hover:text-[#075E54]">ORDER</a>
                             </div>
                         </div>
-                    `;
-                });
-            }
+                    </div>
+                </div>`;
+            }).join('');
 
-            // Plans Grid
-            const pGrid = document.getElementById('plansGrid');
-            if(pGrid) {
-                pGrid.innerHTML = '';
-                SITE_CONFIG.plansData.forEach(p => {
-                    const isPopular = p.id === 'pro';
-                    const langKey = currentLang === 'hi' ? 'hi' : 'en'; 
-                    const durationKey = currentLang === 'hi' ? 'durationHi' : 'durationEn';
-                    const featuresKey = currentLang === 'hi' ? 'featuresHi' : 'featuresEn';
-                    
-                    let containerStyle = '';
-                    let titleStyle = '';
-                    let priceStyle = '';
-                    let listStyle = '';
-                    let btnStyle = '';
-                    let iconColorClass = ''; // New variable for icon color
+            // UPDATED: Pricing Grid with Dynamic Language Support
+            document.getElementById('plansGrid').innerHTML = SITE_CONFIG.plansData.map(p => {
+                let style = p.id === 'starter' ? 'from-[#0f0c29] to-[#302b63] border-[#00d2ff]' : p.id === 'pro' ? 'from-[#FF512F] to-[#DD2476] border-white scale-105 z-10' : 'from-[#BF953F] to-black border-white';
+                let iconColor = p.id === 'starter' ? 'text-cyan-400' : p.id === 'pro' ? 'text-yellow-300' : 'text-yellow-500';
+                const featuresList = currentLang === 'hi' ? p.featuresHi : p.featuresEn;
+                const duration = currentLang === 'hi' ? p.durationHi : p.durationEn;
+                const title = currentLang === 'hi' ? p.hi : p.en;
+                
+                return `<div class="relative rounded-2xl p-2 md:p-6 flex flex-col justify-between text-center bg-gradient-to-br ${style} border-2 shadow-xl min-h-[300px] md:min-h-[500px]">
+                    ${p.id === 'pro' ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-pink-600 px-3 py-0.5 rounded-full text-[9px] md:text-xs font-black uppercase shadow-lg border border-pink-100">Popular</div>' : ''}
+                    <div class="border-b border-white/20 pb-2 mb-2"><h3 class="font-black text-white text-[10px] md:text-2xl uppercase tracking-widest font-['Outfit']">${title}</h3></div>
+                    <div class="mb-2"><span class="text-xl md:text-6xl font-black text-white">₹${p.price}</span><div class="text-[8px] md:text-sm text-white/80 font-bold uppercase">${duration}</div></div>
+                    <div class="flex-grow flex flex-col gap-1 items-center text-white/90 text-[8px] md:text-base text-left">
+                        <div class="inline-flex flex-col gap-1 md:gap-2">${featuresList.map(f => `<div class="flex items-center gap-1.5"><i class="fas fa-check-circle ${iconColor}"></i><span>${f}</span></div>`).join('')}</div>
+                    </div>
+                    <a href="${getWALink('Plan', p.en, p.price)}" class="mt-4 block w-full py-2 md:py-4 rounded-xl bg-white text-slate-900 font-black uppercase text-[10px] md:text-lg shadow-xl hover:scale-95 transition-transform">Buy Now</a>
+                </div>`;
+            }).join('');
 
-                    if (p.id === 'starter') {
-                        // STARTER: Neon Cyberpunk
-                        containerStyle = `background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); border: 2px solid #00d2ff; box-shadow: 0 0 15px rgba(0, 210, 255, 0.4), inset 0 0 20px rgba(0, 210, 255, 0.1);`;
-                        titleStyle = 'text-[#00d2ff] drop-shadow-[0_0_5px_rgba(0,210,255,0.8)]';
-                        priceStyle = 'text-white drop-shadow-[0_0_5px_rgba(0,210,255,0.8)]';
-                        listStyle = 'text-cyan-100';
-                        btnStyle = 'bg-gradient-to-r from-[#00d2ff] to-[#3a7bd5] text-white shadow-[0_0_15px_rgba(0,210,255,0.6)] border border-white/20';
-                        iconColorClass = 'text-[#00d2ff] drop-shadow-[0_0_5px_rgba(0,210,255,0.8)]'; // Neon Cyan Icon
-                    } else if (p.id === 'pro') {
-                        // PROFESSIONAL: Hyper Colorful
-                        containerStyle = `background: linear-gradient(to bottom right, #FF512F, #DD2476); border: 3px solid #fff; box-shadow: 0 0 30px rgba(221, 36, 118, 0.7); transform: scale(1.02); z-index: 10;`;
-                        titleStyle = 'text-white drop-shadow-md';
-                        priceStyle = 'text-white drop-shadow-lg';
-                        listStyle = 'text-pink-50 font-bold';
-                        btnStyle = 'bg-white text-[#DD2476] font-extrabold shadow-[0_0_20px_rgba(255,255,255,0.5)] animate-pulse';
-                        iconColorClass = 'text-yellow-300 drop-shadow-md'; // Bright Yellow Icon
-                    } else {
-                        // LIFETIME: Royal Gold
-                        containerStyle = `background: linear-gradient(to bottom right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); border: 2px solid #fff; box-shadow: 0 0 20px rgba(191, 149, 63, 0.6), inset 0 0 10px rgba(255,255,255,0.5);`;
-                        titleStyle = 'text-black drop-shadow-sm';
-                        priceStyle = 'text-black drop-shadow-sm';
-                        listStyle = 'text-gray-900 font-bold';
-                        btnStyle = 'bg-black text-[#FBF5B7] border border-[#BF953F] shadow-xl hover:bg-gray-900';
-                        iconColorClass = 'text-black'; // Black Icon on Gold
-                    }
+            // UPDATED: Detailed Services with Dynamic Language Support
+            const services = [
+                { tEn: "Digital Marketing", tHi: "डिजिटल मार्केटिंग", c: "blue", i: "fa-bullhorn", pEn: ["SEO Optimization", "Social Media Ads", "Email Marketing", "Lead Generation"], pHi: ["SEO ऑप्टिमाइजेशन", "सोशल मीडिया विज्ञापन", "ईमेल मार्केटिंग", "लीड जनरेशन"] },
+                { tEn: "Content & Creative", tHi: "कंटेंट और क्रिएटिव", c: "orange", i: "fa-lightbulb", pEn: ["Strategy Planning", "Content Writing", "Video Creation", "Real Editing"], pHi: ["रणनीति योजना", "कंटेंट लेखन", "वीडियो निर्माण", "रियल एडिटिंग"] },
+                { tEn: "Social Media Mgmt", tHi: "सोशल मीडिया प्रबंधन", c: "pink", i: "fa-share-alt", pEn: ["Account Management", "Content Scheduling", "Reels & Stories", "Community Growth"], pHi: ["अकाउंट प्रबंधन", "कंटेंट शेड्यूलिंग", "रील्स और स्टोरीज", "कम्युनिटी ग्रोथ"] },
+                { tEn: "Graphic Design", tHi: "ग्राफिक डिजाइन", c: "teal", i: "fa-palette", pEn: ["Logo & Branding", "Posters & Flyers", "App Graphics", "Business ID"], pHi: ["लोगो और ब्रांडिंग", "पोस्टर और फ्लायर्स", "ऐप ग्राफिक्स", "बिज़नेस ID"] },
+                { tEn: "Website & Tech", tHi: "वेबसाइट और टेक", c: "indigo", i: "fa-globe", pEn: ["Web Development", "Landing Pages", "CRM Automation", "Analytics Setup"], pHi: ["वेब डेवलपमेंट", "लैंडिंग पेज", "CRM ऑटोमेशन", "एनालिटिक्स सेटअप"] },
+                { tEn: "Why Choose Us", tHi: "हमें क्यों चुनें", c: "yellow", i: "fa-star", pEn: ["Result-driven", "Experienced Team", "Latest Tech", "Transparent Reports"], pHi: ["परिणाम-संचालित", "अनुभवी टीम", "नवीनतम तकनीक", "पारदर्शी रिपोर्ट्स"] }
+            ];
+            
+            document.getElementById('detailedServicesGrid').innerHTML = services.map(s => {
+                const title = currentLang === 'hi' ? s.tHi : s.tEn;
+                const points = currentLang === 'hi' ? s.pHi : s.pEn;
+                return `
+                <div class="group bg-white rounded-3xl p-6 md:p-8 border-2 border-${s.c}-100 hover:border-${s.c}-400 shadow-sm hover:shadow-xl transition-all hover:-translate-y-2 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-${s.c}-500 w-24 h-24 rounded-bl-[4rem] opacity-5"></div>
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-${s.c}-500 to-${s.c}-600 flex items-center justify-center text-white text-2xl md:text-3xl shadow-lg mb-6"><i class="fas ${s.i}"></i></div>
+                    <h3 class="text-xl md:text-2xl font-black text-slate-800 mb-4 font-['Outfit']">${title}</h3>
+                    <ul class="space-y-3">${points.map(p => `<li class="flex items-start gap-3 text-sm font-bold text-slate-600"><i class="fas fa-check-circle text-${s.c}-500 mt-0.5"></i>${p}</li>`).join('')}</ul>
+                </div>`;
+            }).join('');
 
-                    pGrid.innerHTML += `
-                        <div class="relative rounded-xl md:rounded-3xl p-1 md:p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 h-full min-h-[300px] md:min-h-[500px]" style="${containerStyle}">
-                            ${isPopular ? `<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-[#DD2476] px-3 py-1 md:px-5 md:py-1.5 rounded-full text-[9px] md:text-sm font-black uppercase tracking-widest shadow-[0_0_15px_rgba(255,255,255,0.8)] whitespace-nowrap border-2 border-[#DD2476]">Most Popular</div>` : ''}
-                            
-                            <div class="mt-5 border-b border-white/20 pb-3 mb-2 text-center">
-                                <h3 class="font-black text-[12px] md:text-3xl uppercase tracking-widest ${titleStyle} font-['Outfit'] break-words leading-tight">${p[langKey] || p['en']}</h3>
-                            </div>
-
-                            <div class="mb-4 text-center">
-                                <span class="text-xl md:text-6xl font-black tracking-tighter ${priceStyle}">₹${p.price}</span>
-                                <div class="text-[9px] md:text-sm font-bold opacity-80 uppercase tracking-wider ${p.id === 'lifetime' ? 'text-black' : 'text-white'}">${p[durationKey] || p['durationEn']}</div>
-                            </div>
-
-                            <div class="flex-grow flex flex-col gap-1.5 md:gap-3 text-[10px] md:text-lg text-left px-1.5 md:px-4 mb-4 ${listStyle}">
-                                ${(p[featuresKey] || p['featuresEn']).map(feat => `
-                                    <div class="flex items-start gap-2">
-                                        <i class="fas fa-check-circle mt-0.5 md:mt-1 ${iconColorClass} text-xs md:text-xl shrink-0"></i>
-                                        <span class="font-bold leading-tight drop-shadow-sm">${feat}</span>
-                                    </div>
-                                `).join('')}
-                            </div>
-
-                            <div class="w-full mt-auto mb-2 px-1">
-                                <a href="javascript:location.href=getWALink('Plan', '${p[langKey] || p['en']}', '${p.price}')" class="block w-full py-2.5 md:py-5 rounded-lg md:rounded-2xl font-black uppercase text-center tracking-widest text-[10px] md:text-lg transition-all transform active:scale-95 ${btnStyle}">
-                                    ${currentLang === 'hi' ? 'खरीदें' : 'Buy Now'}
-                                </a>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-
-            // Services Grid
-            const sGrid = document.getElementById('serviceGrid');
-            if(sGrid) {
-                sGrid.innerHTML = '';
-                SITE_CONFIG.otherServices.forEach((s, index) => {
-                    const langKey = currentLang === 'hi' ? 'hi' : 'en';
-                    
-                    sGrid.innerHTML += `
-                        <a href="${s.link}" class="block w-full group relative overflow-hidden mb-2">
-                            <img src="${s.img}" class="w-full h-auto object-cover md:rounded-2xl shadow-sm group-hover:shadow-xl transition-all duration-300" alt="${s[langKey] || s['en']}">
-                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
-                        </a>
-                    `;
-
-                    if (index === 0) {
-                        sGrid.innerHTML += `
-                            <a href="javascript:location.href=getWALink('MoreSolutionsDivider')" class="block w-full bg-gradient-to-r from-[#075E54] to-[#128C7E] border-y-4 border-[#25D366] py-4 my-4 shadow-xl relative overflow-hidden group cursor-pointer hover:from-[#064e46] hover:to-[#0f7a6d] transition-all transform hover:scale-[1.01]">
-                                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
-                                <div class="flex justify-center items-center gap-3 text-white">
-                                    <i class="fab fa-whatsapp text-3xl animate-bounce"></i>
-                                    <span class="font-black text-lg md:text-xl tracking-widest uppercase font-['Outfit'] drop-shadow-md">
-                                        ${currentLang === 'hi' ? 'अधिक जानकारी के लिए संपर्क करें' : 'Contact For More Info'}
-                                    </span>
-                                    <i class="fas fa-arrow-right text-lg animate-pulse"></i>
-                                </div>
-                            </a>
-                        `;
-                    }
-                });
-            }
+            // UPDATED: Other Services with Dynamic Language Support
+            document.getElementById('serviceGrid').innerHTML = SITE_CONFIG.otherServices.map((s, i) => `
+                <div class="w-full">
+                    <a href="${getWALink('Service', s.en)}" class="block group relative overflow-hidden rounded-2xl shadow-lg mb-4"><img src="${s.img}" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"></a>
+                    ${i === 0 ? `<a href="${getWALink('Inquiry')}" class="block w-full bg-gradient-to-r from-emerald-800 to-teal-600 py-4 text-center text-white font-black uppercase tracking-widest my-4 rounded-xl shadow-xl hover:scale-[1.01] transition-all"><i class="fab fa-whatsapp text-2xl mr-2"></i> ${currentLang === 'hi' ? 'अधिक जानकारी के लिए संपर्क करें' : 'Contact For More Information'}</a>` : ''}
+                </div>`).join('');
         }
 
-        let midIdx = 0; let bottomIdx = 0;
-        function rotateAds() {
-            const midAd = SITE_CONFIG.midAds[midIdx];
-            const bottomAd = SITE_CONFIG.bottomAds[bottomIdx];
-            const bT = document.getElementById('bottomAdText'); const bB = document.getElementById('adBottomBtn');
-            const mT = document.getElementById('midAdText'); const mB = document.getElementById('midAdBtn');
-            const langKey = currentLang === 'hi' ? 'hi' : 'en'; const btnKey = currentLang === 'hi' ? 'btnHi' : 'btnEn';
-
-            if(bT && bB && mT && mB) {
-                [bT, bB, mT, mB].forEach(el => el.style.opacity = 0);
-                setTimeout(() => {
-                    mT.innerText = midAd[langKey] || midAd['en']; mB.innerText = midAd[btnKey] || midAd['btnEn']; mB.href = midAd.link;
-                    bT.innerText = bottomAd[langKey] || bottomAd['en']; bB.innerText = bottomAd[btnKey] || bottomAd['btnEn']; bB.href = bottomAd.link;
-                    [bT, bB, mT, mB].forEach(el => el.style.opacity = 1);
-                    midIdx = (midIdx + 1) % SITE_CONFIG.midAds.length; bottomIdx = (bottomIdx + 1) % SITE_CONFIG.bottomAds.length;
-                }, 500);
+        let bottomIdx = 0;
+        function rotateBottomAd() {
+            const ad = SITE_CONFIG.bottomAds[bottomIdx];
+            const bT = document.getElementById('bottomAdText');
+            const bB = document.getElementById('adBottomBtn');
+            if(bT) { 
+                bT.style.opacity = 0; 
+                setTimeout(() => { 
+                    bT.innerText = currentLang === 'hi' ? ad.hi : ad.en; 
+                    // UPDATED: Using 'Service' as type and full ad text as item to be specific in WhatsApp message
+                    bB.href = getWALink('Service', ad.en); 
+                    bT.style.opacity = 1; 
+                    bottomIdx = (bottomIdx + 1) % SITE_CONFIG.bottomAds.length; 
+                }, 500); 
             }
         }
 
         window.onload = () => {
+            // FIX: Added checks to prevent null error if elements are missing
             const v1 = document.getElementById('v1');
             const v2 = document.getElementById('v2');
             if(v1) v1.src = SITE_CONFIG.video1;
             if(v2) v2.src = SITE_CONFIG.video2;
+            
             renderUI();
-            rotateAds();
-            setInterval(rotateAds, 5000);
+            setInterval(rotateBottomAd, 4000);
         };
     </script>
 </body>
